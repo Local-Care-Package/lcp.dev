@@ -15,7 +15,6 @@ class CreateOrdersTable extends Migration {
 		Schema::create('orders', function($table)
 		{
 		    $table->increments('id')->unsigned();
-		    $table->integer('user_id')->unsigned();
 		    $table->string('Street Address', 100);
 		    $table->string('City', 100);
 		    $table->string('State', 100);

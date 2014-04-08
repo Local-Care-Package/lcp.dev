@@ -15,8 +15,6 @@ class CreateOrdersPackagesTable extends Migration {
 		Schema::create('orders_packages', function($table)
 		{
 		    $table->increments('id')->unsigned();
-		    $table->integer('order_id')->unsigned();
-		    $table->integer('package_id')->unsigned();
 		    $table->timestamp('order_delivered_on')->nullable();	
 
 		});

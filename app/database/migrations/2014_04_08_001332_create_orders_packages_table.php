@@ -16,7 +16,7 @@ class CreateOrdersPackagesTable extends Migration {
 		{
 		    $table->increments('id')->unsigned();
 		    $table->timestamp('order_delivered_on')->nullable();	
-
+		    $table->timestamps();
 		});
 	}
 

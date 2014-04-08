@@ -28,10 +28,13 @@ class AddForeignKeysPackageIdAndOrderIdToAssociativeTable extends Migration {
 	 */
 	public function down()
 	{
-		$table->dropForeign('orders_packages_order_id_foreign');
-		$table->dropForeign('orders_packages_package_id_foreign');
-		$table->dropColumn('order_id');
-		$table->dropColumn('package_id');
+		Schema::table('orders_packages', function($table)
+		{
+			$table->dropForeign('orders_packages_order_id_foreign');
+			$table->dropForeign('orders_packages_package_id_foreign');
+			$table->dropColumn('order_id');
+			$table->dropColumn('package_id');
+		});
 	}
 
 }

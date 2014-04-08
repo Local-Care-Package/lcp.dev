@@ -21,7 +21,7 @@ class Order extends BaseModel {
 	 */
 	public function user()
 	{
-		return $this->belongsTo('User');
+		return $this->belongsTo('user');
 	}
 
 	/**
@@ -31,6 +31,6 @@ class Order extends BaseModel {
 	 */
 	public function packages()
 	{
-		return $this->hasMany('Packages');
+		return $this->hasMany('packages');
 	}
 }

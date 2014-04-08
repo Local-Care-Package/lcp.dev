@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration {
 		    $table->timestamp('order_placed_on')->nullable();
 		    $table->string('stripe_transaction_token', 100);
 		    $table->timestamp('order_delivered_on')->nullable();	
-
+		    $table->timestamps();
 		});
 	}
 

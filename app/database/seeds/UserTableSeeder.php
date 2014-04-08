@@ -16,17 +16,19 @@ class UserTableSeeder extends DatabaseSeeder {
         $user->first_name = 'Admin';
         $user->last_name = 'Admin';
         $user->isAdmin = 1;
+        $user->id = 1;
         $user->phone = '2106931774';
         $user->save();
 
         $user2 = new User();
-        $user->email = 'customer@gmail.com';
-        $user->password = 'buystuff';
-        $user->first_name = 'John';
-        $user->last_name = 'Doe';
-        $user->isAdmin = 0;
-        $user->phone = '2106931774';
-        $user->save();
+        $user2->email = 'customer@gmail.com';
+        $user2->password = 'buystuff';
+        $user2->first_name = 'John';
+        $user2->last_name = 'Doe';
+        $user2->isAdmin = 0;
+        $user2->id = 2;
+        $user2->phone = '2106931774';
+        $user2->save();
     }
 
 }

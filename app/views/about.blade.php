@@ -29,7 +29,7 @@
 		<!-- END MARKETING POINTS -->
 
 		<!-- PARNTER COMPANITES -->
-			<div id="parnters" class="row">
+			<div id="partners" class="row">
 			</div>
 		<!-- END PARNTERS -->
 @stop

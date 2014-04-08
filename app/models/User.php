@@ -2,8 +2,9 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Carbon\Carbon;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	/**
 	 * The database table used by the model.
@@ -11,6 +12,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
+
+	/**
+	 * Defines rules for user table
+	 */
+	public static $rules = array(
+	    
+	);
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -47,6 +55,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function getReminderEmail()
 	{
 		return $this->email;
+	}
+
+	/**
+	 * Defining the one to many relationship between user and orders
+	 *
+	 * @var array
+	 */
+	public function orders()
+	{
+		return $this->hasMany('Orders');
 	}
 
 }

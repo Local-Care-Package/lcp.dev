@@ -29,8 +29,13 @@
 				<div class="col-md-5">
 					<div class="hlinks">
 						<ul>
-							<li><a href="{{{ action('HomeController@showCart') }}}" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
+							@if (Auth::check())
+							<li><em>Hello, {{{ Auth::user()->first_name }}}</em></li>
+							<li><a href="{{{ action('HomeController@logout') }}}" role="button" class="btn btn-sm">Logout</a></li>
+							@else
 							<li><a href="{{{ action('HomeController@showLogin') }}}" role="button" class="btn btn-sm">Login / Register</a></li>
+							@endif
+							<li><a href="{{{ action('HomeController@showCart') }}}" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
 						</ul>
 					</div>
 				</div>

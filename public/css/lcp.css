@@ -51,8 +51,9 @@ div.logo {
 	color: #FFFFFF;
 }
 
-.container.main {
+.main {
 	margin-bottom: 20px;
+	min-height: 100%;
 }
 
 #hero {
@@ -74,8 +75,6 @@ div.logo {
 #footer {
 	height: 200px;
 	width: 100%;
-	position: relative;
-	bottom: 0;
 	padding-top: 10px;
 	background-color: #73CFE8;
 }

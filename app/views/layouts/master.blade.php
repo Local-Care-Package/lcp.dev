@@ -64,7 +64,14 @@
 
 <!-- MAIN CONTENT -->
 	<div class="container main">
-	@yield('main-content')
+		@if (Session::has('successMessage'))
+        <div class="alert alert-success session-error">{{{ Session::get('successMessage') }}}</div>
+      	@endif
+      	@if (Session::has('errorMessage'))
+        <div class="alert alert-danger session-error">{{{ Session::get('errorMessage') }}}</div>
+     	@endif
+
+		@yield('main-content')
 	</div>
 <!-- END MAIN -->
 
@@ -96,6 +103,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
+<script>
+  setTimeout(function() {
+    $('.session-error').fadeOut(700);
+  }, 2000);
+
+</script>
 
 </body>
 </html>

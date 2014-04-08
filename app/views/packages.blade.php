@@ -2,6 +2,6 @@
 
 @section('main-content')
 
-<h1>Show Packages!</h1>
+		<h1>Show Packages!</h1>
 
 @stop

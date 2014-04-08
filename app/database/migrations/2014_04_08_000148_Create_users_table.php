@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration {
 		    $table->string('password', 100);  			// Need to hash this... see blog.dev
 		    $table->string('first_name', 100);
 		    $table->string('last_name', 100);
-		    $table->string('phone', 100);     			// Open quesiton.  Format String/Integer/ETC?????
-		    $table->string('stripe_customer_token',100); // Potential Validation?
+		    $table->string('phone', 100)->nullable();     			// Open quesiton.  Format String/Integer/ETC?????
+		    $table->string('stripe_customer_token',100)->nullable(); // Potential Validation?
 		    $table->boolean('isAdmin');					// False for customers, true otherwise
 		    $table->timestamps();		
 		});

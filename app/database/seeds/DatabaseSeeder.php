@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('PackageTableSeeder');
 		$this->call('UserTableSeeder');
 		$this->call('OrderTableSeeder');
-		$this->call('OrdersPackagesTableSeeder');
+		$this->call('OrderPackageTableSeeder');
     	DB::statement('SET FOREIGN_KEY_CHECKS=1;');	// Turn on foreign key constraint after seeding
 	}
 

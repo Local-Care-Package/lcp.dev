@@ -15,10 +15,10 @@ class CreateOrdersTable extends Migration {
 		Schema::create('orders', function($table)
 		{
 		    $table->increments('id')->unsigned();
-		    $table->string('Street Address', 100);
-		    $table->string('City', 100);
-		    $table->string('State', 100);
-		    $table->string('Zip', 10);   				// Validation question
+		    $table->string('street', 100);
+		    $table->string('city', 100);
+		    $table->string('state', 100);
+		    $table->string('zip', 10);   				// Validation question
 		    $table->timestamp('order_placed_on')->nullable();
 		    $table->string('stripe_transaction_token', 100);
 		    $table->timestamp('order_delivered_on')->nullable();	

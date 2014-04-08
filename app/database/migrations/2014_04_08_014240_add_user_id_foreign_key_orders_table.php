@@ -14,8 +14,8 @@ class AddUserIdForeignKeyOrdersTable extends Migration {
 	{
 		Schema::table('orders', function($table)
 		{
-			$table->integer('user_id')->unsigned();
-			$table->foreign('user_id')->references('id')->on('users');  
+			$table->integer('userid')->unsigned();
+			$table->foreign('userid')->references('id')->on('users');  
 		});
 	}
 
@@ -26,8 +26,8 @@ class AddUserIdForeignKeyOrdersTable extends Migration {
 	 */
 	public function down()
 	{
-		$table->dropForeign('orders_user_id_foreign');
-		$table->dropColumn('user_id');
+		$table->dropForeign('orders_userid_foreign');
+		$table->dropColumn('userid');
 	}
 
 }

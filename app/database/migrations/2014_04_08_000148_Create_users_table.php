@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration {
 		    $table->string('phone', 100);     			// Open quesiton.  Format String/Integer/ETC?????
 		    $table->string('stripe_customer_token',100); // Potential Validation?
 		    $table->boolean('isAdmin');					// False for customers, true otherwise
-		    $table->timestamps();		
+		    // $table->timestamps();		
 		});
 	}
 

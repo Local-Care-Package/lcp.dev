@@ -70,7 +70,7 @@ class HomeController extends BaseController {
 	{
 		Auth::logout();
 		Session::flash('successMessage', 'Logout successful.');
-		return Redirect::action('PostsController@index');
+		return Redirect::action('HomeController@showAbout');
 	}
 
 	public function showRegister()

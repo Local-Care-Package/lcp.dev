@@ -3,6 +3,7 @@
 body {
 	font-family: Helvetica, Arial, sans-serif;
 	color: #63666A;
+	min-height: 100%;
 }
 
 h1, h2, h3, h4 {
@@ -51,8 +52,9 @@ div.logo {
 	color: #FFFFFF;
 }
 
-.container.main {
+.main {
 	margin-bottom: 20px;
+	min-height: 400px;
 }
 
 #hero {
@@ -74,6 +76,7 @@ div.logo {
 #footer {
 	height: 200px;
 	width: 100%;
+	position: relative;
 	padding-top: 10px;
 	background-color: #73CFE8;
 }

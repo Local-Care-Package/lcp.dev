@@ -6,7 +6,7 @@
 			<div id="hero-message">
 				<h1>Local Care Package</h1>
 				<p>Blah blah blah blah</p>
-				<button class="btn btn-sm" href="#">Send a package</button>
+				<span><a role="button" class="btn btn-sm" href="{{{ action('HomeController@showPackages') }}}">Send a package</a></button>
 			</div>
 		</div>
 		<!-- END HERO -->
@@ -29,7 +29,7 @@
 		<!-- END MARKETING POINTS -->
 
 		<!-- PARNTER COMPANITES -->
-			<div id="parnters" class="row">
+			<div id="partners" class="row">
 			</div>
 		<!-- END PARNTERS -->
 @stop

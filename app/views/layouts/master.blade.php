@@ -14,6 +14,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/lcp.css">
 
+@yield('topscript')
+
 </head>
 <body>
 
@@ -29,8 +31,13 @@
 				<div class="col-md-5">
 					<div class="hlinks">
 						<ul>
-							<li><a href="{{{ action('HomeController@showCart') }}}" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
+							@if (Auth::check())
+							<li><em>Hello, {{{ Auth::user()->first_name }}}</em></li>
+							<li><a href="{{{ action('HomeController@logout') }}}" role="button" class="btn btn-sm">Logout</a></li>
+							@else
 							<li><a href="{{{ action('HomeController@showLogin') }}}" role="button" class="btn btn-sm">Login / Register</a></li>
+							@endif
+							<li><a href="{{{ action('HomeController@showCart') }}}" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -64,7 +71,14 @@
 
 <!-- MAIN CONTENT -->
 	<div class="container main">
-	@yield('main-content')
+		@if (Session::has('successMessage'))
+        <div class="alert alert-success session-error">{{{ Session::get('successMessage') }}}</div>
+      	@endif
+      	@if (Session::has('errorMessage'))
+        <div class="alert alert-danger session-error">{{{ Session::get('errorMessage') }}}</div>
+     	@endif
+
+		@yield('main-content')
 	</div>
 <!-- END MAIN -->
 
@@ -98,6 +112,14 @@
 <script src="https://js.stripe.com/v2/"></script>
 
 
+<script>
+  setTimeout(function() {
+    $('.session-error').fadeOut(700);
+  }, 2000);
+
+</script>
+
+@yield('bottomscript')
 
 </body>
 </html>

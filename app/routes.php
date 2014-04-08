@@ -25,4 +25,8 @@ Route::get('account', 'HomeController@showAccount');
 
 Route::get('login', 'HomeController@showLogin');
 
+Route::post('login', 'HomeController@doLogin');
+
+Route::get('/logout', 'HomeController@logout');
+
 Route::get('register', 'HomeController@showRegister');

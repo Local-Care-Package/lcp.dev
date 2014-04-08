@@ -2,6 +2,6 @@
 
 return [
 
-	'secret_key' => ' paste secret test key here ',
-	'publishable_key' => ' paste publishable test key here '
+	'secret_key' => 'sk_test_tmZKPpxGIafBRaS640pw8WXC',
+	'publishable_key' => 'pk_test_VlCCHDzP5R9iEC4JrMy9lQnc'
 ];

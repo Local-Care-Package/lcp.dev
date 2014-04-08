@@ -29,8 +29,8 @@
 				<div class="col-md-5">
 					<div class="hlinks">
 						<ul>
-							<li><a href="#" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
-							<li><a href="#" role="button" class="btn btn-sm">Login / Register</a></li>
+							<li><a href="{{{ action('HomeController@showCart') }}}" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
+							<li><a href="{{{ action('HomeController@showLogin') }}}" role="button" class="btn btn-sm">Login / Register</a></li>
 						</ul>
 					</div>
 				</div>
@@ -53,9 +53,9 @@
 
 	    	<div class="collapse navbar-collapse">
 		    	<ul class="nav navbar-nav">
-		    		<li><a href="#">About</a></li>
-			        <li><a href="#">Packages</a></li>
-			        <li><a href="#">My Account</a></li>
+		    		<li><a href="{{{ action('HomeController@showAbout') }}}">About</a></li>
+			        <li><a href="{{{ action('HomeController@showPackages') }}}">Packages</a></li>
+			        <li><a href="{{{ action('HomeController@showAccount') }}}">My Account</a></li>
 		    	</ul>
 		    </div>
 		</div>
@@ -63,7 +63,7 @@
 <!-- END NAV -->
 
 <!-- MAIN CONTENT -->
-	<div class="container">
+	<div class="container main">
 	@yield('main-content')
 	</div>
 <!-- END MAIN -->

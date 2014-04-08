@@ -11,7 +11,18 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showAbout');
+
+Route::get('shop-packages', 'HomeController@showPackages');
+
+Route::get('cart', 'HomeController@showCart');
+
+Route::get('checkout', 'HomeController@showCheckout');
+
+Route::get('confirmation', 'HomeController@showConfirmation');
+
+Route::get('account', 'HomeController@showAccount');
+
+Route::get('login', 'HomeController@showLogin');
+
+Route::get('register', 'HomeController@showRegister');

@@ -8,7 +8,7 @@ class OrderTableSeeder extends DatabaseSeeder {
 	 */
     public function run()
     {
-        DB::table('users')->delete();
+        DB::table('orders')->delete();
 
         $order1 = new Order();
         $order1->user_id = 2;

@@ -43,7 +43,15 @@ class UsersController extends \BaseController {
 	public function show($id)
 	{
 		$userInfo = User::findOrFail($id);
-		return View::make('account')->with('userInfo', $userInfo);
+		// $orders = $query->('where', )
+		// $query = Post::with('user');
+		// $orderHistory = Order::all();
+		$data = [
+			'userInfo' => $userInfo,
+			// 'orderHistory' => $orderHistory
+		];
+
+		return View::make('account')->with($data);
 	}
 
 	/**

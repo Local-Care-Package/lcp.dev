@@ -34,7 +34,7 @@
 						Expires 00/00<br>
 					</p>
 				</div>
-				<span><a href="" class="btn btn-sm">Edit Account Info</a></span>
+				<span><a href="{{{ action('HomeController@showEditAccount') }}}" class="btn btn-sm">Edit Account Info</a></span>
 			</div>
 			<div class="col-md-9">
 				<h3>Care packages you've sent:</h3>
@@ -49,9 +49,11 @@
 					<!-- foreach (order as order) -->
 					@foreach ($orders as $order)
 					<tr>
-						<td>{{{ $order->created_at->format('l, F jS, Y') }}}</td>
-						<td>{{{ $order->id }}}</td>
-						<td>{{{ var_dump($order->orderpackages) }}}</td>
+						<td>$order->created_at->format('l, F jS, Y')</td>
+						<td>$order->id</td>
+						<td>$order->package->description</td>
+						<td>$order->package->price</td>
+						<td>$order->package->status</td>
 					</tr>
 					@endforeach
 				</table>

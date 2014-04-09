@@ -20,30 +20,6 @@ class HomeController extends BaseController {
 		return View::make('about');
 	}
 
-	public function showPackages()
-	{
-		$packages = DB::table('packages')->get();
-		$data = array(
-			'packages'=>$packages
-		);
-		return View::make('packages')->with($data);
-	}
-
-	public function showCart()
-	{
-		return View::make('cart');
-	}
-
-	public function showCheckout()
-	{
-		return View::make('checkout');
-	}
-
-	public function showConfirmation()
-	{
-		return View::make('confirmation');
-	}
-
 	public function showLogin()
 	{
 		return View::make('login');

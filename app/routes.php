@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@showAbout');
 
 Route::get('shop-packages', 'HomeController@showPackages');
 
-Route::get('cart', 'HomeController@showCart');
+Route::get('cart/{id}', 'HomeController@showCart');
 
 Route::get('checkout', 'HomeController@showCheckout');
 
@@ -30,3 +30,5 @@ Route::post('login', 'HomeController@doLogin');
 Route::get('logout', 'HomeController@logout');
 
 Route::get('register', 'HomeController@showRegister');
+
+// Route::get('', 'HomeController@doLogin');

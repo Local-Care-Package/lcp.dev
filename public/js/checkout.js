@@ -10,7 +10,11 @@
 			Stripe.setPublishableKey(stripeKey);
 
 			this.bindEvents();
-		}
+		}, 
+
+		bindEvents: function() {
+			this.form.on('submit', $.proxy(this.sendToken, this));,
+		},
 
 		sendToken: function() {
 			this.submitButton.val('One Moment').prop('disabled', true);
@@ -21,7 +25,7 @@
 		},
 
 		stripeResponseHandler: function(status, response) {
-	
+
 			if (response.error) {
 				this.form.find('.payment-errors').show().text(response.error.message);
 				return this.submitButton.prop('disabled', false).val(this.submitButtonValue);

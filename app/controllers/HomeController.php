@@ -68,9 +68,4 @@ class HomeController extends BaseController {
 		return Redirect::action('HomeController@showAbout');
 	}
 
-	public function showRegister()
-	{
-		return View::make('register');
-	}
-
 }

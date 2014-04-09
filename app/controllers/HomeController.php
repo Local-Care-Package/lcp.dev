@@ -22,7 +22,11 @@ class HomeController extends BaseController {
 
 	public function showPackages()
 	{
-		return View::make('packages');
+		$packages = DB::table('packages')->get();
+		$data = array(
+			'packages'=>$packages
+		);
+		return View::make('packages')->with($data);
 	}
 
 	public function showCart()

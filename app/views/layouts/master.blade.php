@@ -62,7 +62,7 @@
 		    	<ul class="nav navbar-nav">
 		    		<li><a href="{{{ action('HomeController@showAbout') }}}">About</a></li>
 			        <li><a href="{{{ action('HomeController@showPackages') }}}">Packages</a></li>
-			        <li><a href="@if (Auth::check()) {{{ action('OrdersController@index') }}} @else {{{ action('HomeController@showRegister') }}} @endif">My Account</a></li>
+			        <li><a href="@if (Auth::check()) {{{ action('UsersController@show', 'Auth::user()->id') }}} @else {{{ action('HomeController@showRegister') }}} @endif">My Account</a></li>
 		    	</ul>
 		    </div>
 		</div>

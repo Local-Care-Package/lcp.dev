@@ -17,10 +17,19 @@ class Package extends BaseModel {
 	);
 
 	/**
-	 * Defines relationship that post belongs to user (author)
+	 * Defines relationship that package belongs to order (author)
 	 */
 	public function order()
 	{
 		return $this->belongsTo('Order');
+	}
+
+	/**
+	 * Defines relationship that package belong to many package types
+	 */
+
+	public function packageType()
+	{
+		return $this->hasMany('PackageType');
 	}
 }

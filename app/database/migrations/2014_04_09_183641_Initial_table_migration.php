@@ -44,7 +44,7 @@ class InitialTableMigration extends Migration {
 		{
 		    $table->increments('id')->unsigned();
 		    $table->string('description', 200);
-		    $table->decimal('sale_price_USD', 5, 2);
+		    $table->decimal('price', 5, 2);
 		    $table->timestamps();
 
 		});

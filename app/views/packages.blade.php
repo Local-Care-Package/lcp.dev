@@ -16,9 +16,9 @@
 			@foreach ($packages as $package)
 			<div class="col-md-4">
 				<img src="/img/package2.jpg">
-				<h3>{{{$package->description}}}</h3>
+				<h3>{{{ $package->description }}}</h3>
 				<ul>
-					<li>{{{$package->sale_price_USD}}}</li>
+					<li>{{{ $package->sale_price_USD }}}</li>
 				</ul>
 				<span><a role="button" class="btn btn-sm" href="{{{ action('HomeController@showCart', $package->id) }}}">Add to Cart</a></span>
 			</div>

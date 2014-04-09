@@ -2,12 +2,12 @@
 
 use Carbon\Carbon;
 
-class OrderPackage extends BaseModel {
+class PackageType extends BaseModel {
 
 	/**
 	 * Defines posts table
 	 */
-    protected $table = 'orders_packages';
+    protected $table = 'package_type';
 
 	/**
 	 * Defines rules for orders table
@@ -16,4 +16,8 @@ class OrderPackage extends BaseModel {
 	    
 	);
 
+	public function package()
+	{
+		return $this->belongsTo('Package');
+	}
 }

@@ -32,6 +32,6 @@
 		
 		<div class="col-md-6">
 			<h3>Not a member yet?</h3>
-			<p><a href="{{{ action('HomeController@showRegister') }}}">Click here to register!</a></p>
+			<p><a href="{{{ action('UsersController@create') }}}">Click here to register!</a></p>
 		</div>
 @stop

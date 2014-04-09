@@ -23,9 +23,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					{{ Form::label('email', 'Email', array('class' => 'col-sm-3 control-label')) }}
+					{{ Form::label('email', 'Email', array('class' => 'col-sm-3 control-label' )) }}
 					<div class="col-sm-9">
-						{{ Form::text('email', null, array('class' => 'form-control')) }}
+						{{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'ilovelcp@lcp.com')) }}
 					</div>
 				</div>
 				<div class="form-group">
@@ -35,9 +35,15 @@
 				</div>
 				</div>
 				<div class="form-group">
-					{{ Form::label('password', 'Password', array('class' => 'col-sm-3 control-label')) }}
+					{{ Form::label('password1', 'Password', array('class' => 'col-sm-3 control-label')) }}
 					<div class="col-sm-9">
-						{{ Form::password('password', array('class' => 'form-control')) }}
+						{{ Form::password('password1', array('class' => 'form-control')) }}
+					</div>
+				</div>
+				<div class="form-group">
+					{{ Form::label('password2', 'Re-enter Password', array('class' => 'col-sm-3 control-label')) }}
+					<div class="col-sm-9">
+						{{ Form::password('password2', array('class' => 'form-control')) }}
 					</div>
 				</div>
 				<div class="form-group">

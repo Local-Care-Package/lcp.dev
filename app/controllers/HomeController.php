@@ -33,6 +33,12 @@ class HomeController extends BaseController {
 	public function showCheckout()
 	{
 		return View::make('checkout');
+		// return 'something';
+	}
+
+	public function confirmation()
+	{
+		return 'test';
 	}
 
 	public function showConfirmation()

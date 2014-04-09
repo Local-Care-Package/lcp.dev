@@ -9,7 +9,11 @@ class OrdersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$query = Order::with('user')->orderBy('created_at', 'desc');
+		$orders = $query->paginate(25);
+
+		// return 'GET, Shows list of all orders';	
+		return View::make('account')->with('orders', $orders);
 	}
 
 	/**

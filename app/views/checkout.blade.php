@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="row">
 			<div class="col-md-6">
-				{{ Form::open(['id' => 'billing-form'], array('class' => 'form-horizontal')) }}
+				{{ Form::open(array('id' => 'billing-form', 'class' => 'form-horizontal' )) }}
 
 				<div class="form-group">
 					{{ Form::label('card_number', 'Credit Card Number', array('class' => 'col-sm-3 control-label' )) }}
@@ -23,7 +23,7 @@
 		</div>
 		<div class="row">		
 				<div class="form-group">
-					{{ Form::label('cvc', 'CVC (Security Code', array('class' => 'col-sm-3 control-label')) }}
+					{{ Form::label('cvc', 'CVC', 'Security Code', array('class' => 'col-sm-3 control-label')) }}
 					<div class="col-sm-9">
 						<input type = "text" data-stripe = "cvc">
 					</div>
@@ -66,7 +66,7 @@
 
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-9">
-						{{ Form::submit('Buy Now!', array('class' => 'btn btn-sm'))}}
+						{{ Form::submit('Buy Now!', array('class' => 'btn btn-sm')) }}
 					</div>
 				</div>
 		</div>

@@ -78,4 +78,9 @@ class HomeController extends BaseController {
 		return View::make('register');
 	}
 
+	public function buy()
+	{
+		return dd(Input::all());
+	}
+
 }

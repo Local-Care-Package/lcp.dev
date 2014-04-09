@@ -21,7 +21,7 @@ Route::get('checkout', 'HomeController@showCheckout');
 
 Route::get('confirmation', 'HomeController@showConfirmation');
 
-Route::get('account', 'HomeController@showAccount');
+Route::get('account', 'OrdersController@index');
 
 Route::get('login', 'HomeController@showLogin');
 

@@ -21,6 +21,6 @@ class Package extends BaseModel {
 	 */
 	public function order()
 	{
-		return $this->hasMany('Orders');
+		return $this->belongsTo('Order');
 	}
 }

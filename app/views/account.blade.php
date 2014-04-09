@@ -34,7 +34,7 @@
 						Expires 00/00<br>
 					</p>
 				</div>
-				<span><a href="{{{ action('HomeController@showEditAccount') }}}" class="btn btn-sm">Edit Account Info</a></span>
+				<span><a href="{{{ action('UsersController@edit') }}}" class="btn btn-sm">Edit Account Info</a></span>
 			</div>
 			<div class="col-md-9">
 				<h3>Care packages you've sent:</h3>
@@ -46,15 +46,20 @@
 						<th>Price</th>
 						<th>Status</th>
 					</tr>
-					<!-- foreach (order as order) -->
-					@foreach ($orders as $order)
+					@foreach ($userInfo->orders as $order)
+						@foreach ($order->packages as $package)
 					<tr>
-						<td>$order->created_at->format('l, F jS, Y')</td>
-						<td>$order->id</td>
-						<td>$order->package->description</td>
-						<td>$order->package->price</td>
-						<td>$order->package->status</td>
+						<td>{{ $order->created_at->format('l, F jS, Y') }}</td>
+						<td>{{ $order->id }}</td>
+						<td>{{ $package->type_id }}</td>
+						<td>{{ $package->price }}</td>
+						@if ($package->delivered_on == NULL)
+							<td>In Package</td> 
+						@else 
+						<td>{{ $package->delivered_on }} </td>
+						@endif
 					</tr>
+						@endforeach
 					@endforeach
 				</table>
 			</div>

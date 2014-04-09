@@ -2,6 +2,17 @@
 
 class DatabaseSeeder extends Seeder {
 
+	protected $faker;
+	
+	public function getFaker()
+	{
+	    if (empty($this->faker))
+	    {
+	      $this->faker = Faker\Factory::create();
+	    }
+	    return $this->faker;
+	}
+
 	/**
 	 * Run the database seeds.
 	 *
@@ -11,9 +22,12 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-    	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');	// Turn off foreign key constraint for seeding
-		// $this->call('UserTableSeeder');
-    	// DB::statement('SET FOREIGN_KEY_CHECKS=1;');	// Turn on foreign key constraint after seeding
+    	DB::statement('SET FOREIGN_KEY_CHECKS=0;');	// Turn off foreign key constraint for seeding
+		$this->call('UserTableSeeder');
+		$this->call('PackageTypeTableSeeder');
+		$this->call('PackageTableSeeder');
+		$this->call('OrderTableSeeder');
+    	DB::statement('SET FOREIGN_KEY_CHECKS=1;');	// Turn on foreign key constraint after seeding
 	}
 
 }

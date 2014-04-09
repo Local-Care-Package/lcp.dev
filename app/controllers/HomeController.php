@@ -40,11 +40,6 @@ class HomeController extends BaseController {
 		return View::make('confirmation');
 	}
 
-	public function showAccount()
-	{
-		return View::make('account');
-	}
-
 	public function showLogin()
 	{
 		return View::make('login');

@@ -18,6 +18,7 @@ Route::get('shop-packages', 'HomeController@showPackages');
 Route::get('cart', 'HomeController@showCart');
 
 Route::get('checkout', 'HomeController@showCheckout');
+Route::post('checkout', 'HomeController@confirmation');
 
 Route::get('confirmation', 'HomeController@showConfirmation');
 

@@ -32,12 +32,12 @@
 					<div class="hlinks">
 						<ul class="list-inline">
 							@if (Auth::check())
-							<li><em>Hello, {{{ Auth::user()->first_name }}}</em></li>
+							<li><em>Hello, {{{ Auth::user()->first_name }}}!</em></li>
 							<li><a href="{{{ action('HomeController@logout') }}}" role="button" class="btn btn-sm">Logout</a></li>
 							@else
 							<li><a href="{{{ action('HomeController@showLogin') }}}" role="button" class="btn btn-sm">Login / Register</a></li>
 							@endif
-							<li><a href="{{{ action('HomeController@showCart') }}}" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
+							<li><a href="" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 		    	<ul class="nav navbar-nav">
 		    		<li><a href="{{{ action('HomeController@showAbout') }}}">About</a></li>
 			        <li><a href="{{{ action('HomeController@showPackages') }}}">Packages</a></li>
-			        <li><a href="@if (Auth::check()) {{{ action('HomeController@showAccount') }}} @else {{{ action('HomeController@showRegister') }}} @endif">My Account</a></li>
+			        <li><a href="@if (Auth::check()) {{{ action('UsersController@show', Auth::user()->id) }}} @else {{{ action('UsersController@create') }}} @endif">My Account</a></li>
 		    	</ul>
 		    </div>
 		</div>

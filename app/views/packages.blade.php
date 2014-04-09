@@ -13,16 +13,37 @@
 		<!-- END HERO -->
 
 		<div id="packages" class="row">
-			@foreach ($packages as $package)
 			<div class="col-md-4">
 				<img src="/img/package2.jpg">
-				<h3>{{{$package->description}}}</h3>
-				<ul>
-					<li>{{{$package->sale_price_USD}}}</li>
-				</ul>
-				<span><a role="button" class="btn btn-sm" href="{{{ action('HomeController@showCart', $package->id) }}}">Add to Cart</a></span>
+				<h3>Package Description</h3>
+					<ul>
+						<li>Price</li>
+						<li>Price</li>
+						<li>Price</li>
+					</ul>
+				<span><a role="button" class="btn btn-sm" href="">Add to Cart</a></span>
 			</div>
-			@endforeach
+			<div class="col-md-4">
+				<img src="/img/package2.jpg">
+				<h3>Package Description</h3>
+					<ul>
+						<li>Price</li>
+						<li>Price</li>
+						<li>Price</li>
+					</ul>
+				<span><a role="button" class="btn btn-sm" href="">Add to Cart</a></span>
+			</div>
+			<div class="col-md-4">
+				<img src="/img/package2.jpg">
+				<h3>Package Description</h3>
+					<ul>
+						<li>Price</li>
+						<li>Price</li>
+						<li>Price</li>
+					</ul>
+				<span><a role="button" class="btn btn-sm" href="">Add to Cart</a></span>
+			</div>
+		</div>
 
 @stop
 

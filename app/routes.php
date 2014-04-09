@@ -15,20 +15,12 @@ Route::get('/', 'HomeController@showAbout');
 
 Route::get('shop-packages', 'HomeController@showPackages');
 
-Route::get('cart/{id}', 'HomeController@showCart');
-
-Route::get('checkout', 'HomeController@showCheckout');
-
-Route::get('confirmation', 'HomeController@showConfirmation');
-
-Route::get('account', 'HomeController@showAccount');
-
 Route::get('login', 'HomeController@showLogin');
 
 Route::post('login', 'HomeController@doLogin');
 
 Route::get('logout', 'HomeController@logout');
 
-Route::get('register', 'HomeController@showRegister');
+Route::resource('/users', 'UsersController');
 
-// Route::get('', 'HomeController@doLogin');
+Route::resource('/orders', 'OrdersController');

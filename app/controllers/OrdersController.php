@@ -8,8 +8,12 @@ class OrdersController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
-	{
-		//
+	{		
+		$packages = DB::table('package_type')->get();
+		$data = array(
+			'packages'=>$packages
+		);
+		return View::make('packages')->with($data);
 	}
 
 	/**
@@ -19,7 +23,7 @@ class OrdersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('checkout');
 	}
 
 	/**
@@ -29,7 +33,8 @@ class OrdersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// save checkout info to DB
+		return View::make('confirmation');
 	}
 
 	/**
@@ -40,7 +45,7 @@ class OrdersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		// show order/package details (for order history, confirm email)
 	}
 
 	/**
@@ -51,7 +56,7 @@ class OrdersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// edit order history (ADMIN FUNCITON ONLY)
 	}
 
 	/**
@@ -62,7 +67,7 @@ class OrdersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		// add more items to cart ?
 	}
 
 	/**
@@ -73,7 +78,7 @@ class OrdersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// delete item from cart/order
 	}
 
 }

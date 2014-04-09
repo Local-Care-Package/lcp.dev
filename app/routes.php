@@ -15,18 +15,12 @@ Route::get('/', 'HomeController@showAbout');
 
 Route::get('shop-packages', 'HomeController@showPackages');
 
-Route::get('checkout', 'HomeController@showCheckout');
-
-Route::get('confirmation', 'HomeController@showConfirmation');
-
 Route::get('login', 'HomeController@showLogin');
 
 Route::post('login', 'HomeController@doLogin');
 
 Route::get('logout', 'HomeController@logout');
 
-Route::get('register', 'HomeController@showRegister');
+Route::resource('/users', 'UsersController');
 
-Route::get('edit-account', 'UsersController@showEditAccount');
-
-Route::get('account', 'OrdersController@index');
+Route::resource('/orders', 'OrdersController');

@@ -13,44 +13,16 @@
 		<!-- END HERO -->
 
 		<div id="packages" class="row">
+			@foreach ($packages as $package)
 			<div class="col-md-4">
 				<img src="/img/package2.jpg">
-				<h3>Package 1</h3>
+				<h3>{{{$package->description}}}</h3>
 				<ul>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
+					<li>{{{$package->sale_price_USD}}}</li>
 				</ul>
-				<span><a role="button" class="btn btn-sm" href="{{{ action('HomeController@showCart') }}}">Send Package</a></span>
+				<span><a role="button" class="btn btn-sm" href="{{{ action('HomeController@showCart', $package->id) }}}">Add to Cart</a></span>
 			</div>
-			<div class="col-md-4">
-				<img src="/img/package2.jpg">
-				<h3>Package 2</h3>
-				<ul>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-				</ul>
-				<span><a role="button" class="btn btn-sm" href="{{{ action('HomeController@showCart') }}}">Send Package</a></span>
-			</div>
-			<div class="col-md-4">
-				<img src="/img/package2.jpg">
-				<h3>Package 3</h3>
-				<ul>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-					<li>Spec 1</li>
-				</ul>
-				<span><a role="button" class="btn btn-sm" href="{{{ action('HomeController@showCart') }}}">Send Package</a></span>
-			</div>
-			</div>
-		</div>
+			@endforeach
 
 @stop
 

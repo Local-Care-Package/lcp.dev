@@ -1,24 +1,23 @@
 <?php
-class OrderTableSeeder extends DatabaseSeeder {
- 
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
+
+class OrderTableSeeder extends DatabaseSeeder
+{
     public function run()
     {
-        DB::table('orders')->delete();
 
-        $order1 = new Order();
-        $order1->user_id = 2;
-        $order1->street = '123 Alamo Street';
-        $order1->city = 'San Antonio';
-        $order1->state = 'TX';
-        $order1->zip = '78245';
-        $order1->stripe_transaction_token = 'lalalallalallalallal';
-        $order1->save();
-
+        $faker = $this->getFaker();
+        for ($i = 1; $i < 11; $i++)
+        {
+          $order = Order::create(array(
+            'id' => "$i",
+            'user_id' => $faker->randomNumber(2, 10),
+            'street' => $faker->streetAddress,
+            'city' => $faker->city,
+            'state' => $faker->stateAbbr,
+            'zip' => $faker->postcode,
+            'gift_message' => $faker->sentence($nbWords = 6),
+            'stripe_transaction_token' => $faker->md5
+          ));
+        }
     }
-
 }

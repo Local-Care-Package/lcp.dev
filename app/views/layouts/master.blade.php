@@ -30,7 +30,7 @@
 				</div>
 				<div class="col-md-5">
 					<div class="hlinks">
-						<ul>
+						<ul class="list-inline">
 							@if (Auth::check())
 							<li><em>Hello, {{{ Auth::user()->first_name }}}</em></li>
 							<li><a href="{{{ action('HomeController@logout') }}}" role="button" class="btn btn-sm">Logout</a></li>
@@ -62,7 +62,7 @@
 		    	<ul class="nav navbar-nav">
 		    		<li><a href="{{{ action('HomeController@showAbout') }}}">About</a></li>
 			        <li><a href="{{{ action('HomeController@showPackages') }}}">Packages</a></li>
-			        <li><a href="{{{ action('HomeController@showAccount') }}}">My Account</a></li>
+			        <li><a href="@if (Auth::check()) {{{ action('HomeController@showAccount') }}} @else {{{ action('HomeController@showRegister') }}} @endif">My Account</a></li>
 		    	</ul>
 		    </div>
 		</div>
@@ -88,7 +88,7 @@
       	<div class="row">
       		<div class="col-md-4">
       			<h3>Connect with us!</h3>	
-      				<ul>	
+      				<ul class="list-inline">	
       					<li><a href="#"><i class="fa fa-facebook-square social"></i></a></li>
 						<li><a href="#"><i class="fa fa-twitter social"></i></a></li>
 						<li><a href="#"><i class="fa fa-instagram social"></i></a></li>

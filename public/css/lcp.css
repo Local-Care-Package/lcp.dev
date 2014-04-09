@@ -37,9 +37,6 @@ div.logo {
 
 .hlinks ul li {
 	padding-top: 20px;
-	margin-right: 10px;
-	display: inline;
-	float: left;
 	text-decoration: none;
 }
 
@@ -84,13 +81,7 @@ div.logo {
 #footer ul {
 	list-style-type: none;
 	padding: 0px;
-}
-
-#footer ul li {
 	padding-top: 10px;
-	margin-right: 30px;
-	display: inline;
-	float: left;
 	text-decoration: none;
 }
 

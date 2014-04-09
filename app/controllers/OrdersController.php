@@ -9,11 +9,8 @@ class OrdersController extends \BaseController {
 	 */
 	public function index()
 	{		
-		$packages = DB::table('package_type')->get();
-		$data = array(
-			'packages'=>$packages
-		);
-		return View::make('packages')->with($data);
+		// view all orders if ADMIN
+		// else access denied
 	}
 
 	/**

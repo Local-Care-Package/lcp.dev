@@ -21,8 +21,6 @@ Route::get('checkout', 'HomeController@showCheckout');
 
 Route::get('confirmation', 'HomeController@showConfirmation');
 
-Route::get('account', 'OrdersController@index');
-
 Route::get('login', 'HomeController@showLogin');
 
 Route::post('login', 'HomeController@doLogin');
@@ -30,3 +28,7 @@ Route::post('login', 'HomeController@doLogin');
 Route::get('logout', 'HomeController@logout');
 
 Route::get('register', 'HomeController@showRegister');
+
+Route::get('edit-account', 'UsersController@showEditAccount');
+
+Route::get('account', 'OrdersController@index');

@@ -37,12 +37,14 @@
 				name: 'stripeToken',
 				value: response.id
 
-			}) .appendTo(this.form);
+			}).appendTo(this.form);
 
-			this.form[0].submit();
+			// this.form[0].submit();
 
 		}
 	};
-}
+
 	StripeBilling.init();
-})
+})();
+
+

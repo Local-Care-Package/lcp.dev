@@ -40,7 +40,7 @@ class InitialTableMigration extends Migration {
 		    $table->timestamps();
 		});
 
-		Schema::create('package_type', function($table)
+		Schema::create('package_types', function($table)
 		{
 		    $table->increments('id')->unsigned();
 		    $table->string('description', 200);
@@ -55,8 +55,8 @@ class InitialTableMigration extends Migration {
 		    $table->string('description', 200);
 		    $table->integer('order_id')->unsigned();
 		    $table->foreign('order_id')->references('id')->on('orders');
-		    $table->integer('type_id')->unsigned()->references('id')->on('package_type');
-			$table->foreign('type_id')->references('id')->on('package_type');
+		    $table->integer('package_type_id')->unsigned()->references('id')->on('package_types');
+			$table->foreign('package_type_id')->references('id')->on('package_types');
 			$table->timestamp('packaged_at')->nullable(); 
 		    $table->timestamp('delivered_at')->nullable();
 		    $table->timestamps();  
@@ -74,7 +74,7 @@ class InitialTableMigration extends Migration {
 		Schema::table('packages', function($table)
 		{
 			$table->dropForeign('packages_order_id_foreign');
-			$table->dropForeign('packages_type_id_foreign');
+			$table->dropForeign('packages_package_type_id_foreign');
 		});
 
 		Schema::table('orders', function($table)
@@ -82,7 +82,7 @@ class InitialTableMigration extends Migration {
 			$table->dropForeign('orders_user_id_foreign');
 		});
 
-		Schema::drop('package_type');
+		Schema::drop('package_types');
 		Schema::drop('packages');
 		Schema::drop('orders');
 		Schema::drop('users');

@@ -1,5 +1,7 @@
 <?php
 
+// App::bind('billing\billingInterface', 'billing\stripeBilling');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -18,7 +20,7 @@ Route::get('shop-packages', 'HomeController@showPackages');
 Route::get('cart', 'HomeController@showCart');
 
 Route::get('checkout', 'HomeController@showCheckout');
-Route::post('checkout', 'HomeController@confirmation');
+Route::post('checkout', 'HomeController@buyCheckout');
 
 Route::get('confirmation', 'HomeController@showConfirmation');
 

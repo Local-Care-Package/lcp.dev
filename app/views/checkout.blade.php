@@ -2,6 +2,67 @@
 
 @section('main-content')
 
-		<h1>Show Checkout!</h1>
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Show Checkout!</h1>	
+			</div>
+		</div>	
+		<!-- START FORM -->
+		<div class="row">
+			<div class="col-md-6">
+				{{ Form::open(array('class' => 'form-horizontal')) }}
+
+				<div class="form-group">
+					{{ Form::label('card_number', 'Credit Card Number', array('class' => 'col-sm-3 control-label' )) }}
+					<div class="col-sm-9">
+						<input type = "text" data-stripe = "number">
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{ Form::label('cvc', 'CVC (Security Code', array('class' => 'col-sm-3 control-label')) }}
+					<div class="col-sm-9">
+						<input type = "text" data-stripe = "cvc">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					{{ Form::label('month', 'Expiration Month', array('class' => 'col-sm-3 control-label')) }}
+					<div class="col-sm-9">
+						{{ Form::selectMonth(null, null, ['data-stripe' => 'exp-month']) }}
+					</div>
+				</div>
+
+				<div class="form-group">
+					{{ Form::label('year', 'Expiration Year', array('class' => 'col-sm-3 control-label')) }}
+					<div class="col-sm-9">
+						{{ Form::selectYear(null, date('Y'), date('Y') + 10, null, ['data-stripe' => 'exp-year']) }}
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					{{ Form::label('first_name', 'First Name', array('class' => 'col-sm-3 control-label')) }}
+					<div class="col-sm-9">
+						{{ Form::text('first_name', null, array('class' => 'form-control')) }}
+					</div>
+				</div>
+				<div class="form-group">
+					{{ Form::label('last_name', 'Last Name', array('class' => 'col-sm-3 control-label')) }}
+					<div class="col-sm-9">
+						{{ Form::text('last_name', null, array('class' => 'form-control')) }}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-9">
+						{{ Form::submit('Buy Now!', array('class' => 'btn btn-sm'))}}
+					</div>
+				</div>
+
+				{{ Form::close() }}
+			</div>
+		</div>
+		<!-- END FORM -->
 
 @stop

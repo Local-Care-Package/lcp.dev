@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-		<h1>Returning customer? Sign in!</h1>
+		<h1>Returning customer? <small>Sign in!</small></h1>
 				<hr>
 
 			<div class="col-md-6">
@@ -22,15 +22,16 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						{{ Form::submit('Login', array('class' => 'btn btn-primary'))}}
+						{{ Form::submit('Login', array('class' => 'btn btn-sm'))}}
 					</div>
 				</div>
 
 				{{ Form::close() }}
 			</div>
+			<!-- END FORM -->
 		
 		<div class="col-md-6">
 			<h3>Not a member yet?</h3>
-			<p><a href="{{{ action('HomeController@showRegister') }}}">Click here to register!</a></p>
+			<p><a href="{{{ action('UsersController@create') }}}">Click here to register!</a></p>
 		</div>
 @stop

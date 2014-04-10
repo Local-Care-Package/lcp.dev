@@ -6,6 +6,16 @@ body {
 	min-height: 100%;
 }
 
+/* INPUT ERROR MESSAGE */
+.help-block {
+	color: #FF0000;
+}
+
+/* ACCESS DENIED PAGE */
+.fa-ban {
+	color: #FF0000;
+}
+
 h1, h2, h3, h4 {
 	font-family: 'Roboto', sans-serif;
 }
@@ -37,9 +47,6 @@ div.logo {
 
 .hlinks ul li {
 	padding-top: 20px;
-	margin-right: 10px;
-	display: inline;
-	float: left;
 	text-decoration: none;
 }
 
@@ -84,13 +91,7 @@ div.logo {
 #footer ul {
 	list-style-type: none;
 	padding: 0px;
-}
-
-#footer ul li {
 	padding-top: 10px;
-	margin-right: 30px;
-	display: inline;
-	float: left;
 	text-decoration: none;
 }
 

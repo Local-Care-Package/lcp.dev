@@ -46,8 +46,8 @@ Route::filter('auth.basic', function()
 
 Route::filter('users.protect', function()
 {
-	$param = Request::segment(2);
-	$user = User::find($param);
+	$id = Request::segment(2);
+	$user = User::find($id);
 	if (Auth::user()->id != $user->id && Auth::user()->is_admin != true) {
 		return Redirect::action('HomeController@accessDenied');
 	}

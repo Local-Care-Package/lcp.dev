@@ -17,7 +17,11 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	 * Defines rules for user table
 	 */
 	public static $rules = array(
-	    
+	    'first_name' => 'required|max:100',
+    	'last_name'  => 'required|max:100',
+    	'email' => 'required|email|unique:users',
+    	'password' => 'required|min:8|confirmed',
+    	'password_confirmation' => 'min:8'
 	);
 
 	/**

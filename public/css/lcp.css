@@ -6,7 +6,13 @@ body {
 	min-height: 100%;
 }
 
+/* INPUT ERROR MESSAGE */
 .help-block {
+	color: #FF0000;
+}
+
+/* ACCESS DENIED PAGE */
+.fa-ban {
 	color: #FF0000;
 }
 

@@ -24,6 +24,12 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     	'password_confirmation' => 'min:8'
 	);
 
+	public static $editRules = array(
+	    'first_name' => 'required|max:100',
+    	'last_name'  => 'required|max:100',
+    	'email' => 'required|email|unique:users'
+	);
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *

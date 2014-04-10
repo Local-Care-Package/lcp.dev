@@ -87,16 +87,9 @@ class UsersController extends \BaseController {
 	public function show($id)
 	{
 		$user = User::findOrFail($id);
-
-		return View::make('account.show')->with('user', $user);
-	}
-
-	public function showOrderHistory()
-	{
-		$user = Auth::user();
-
 		$orders = $user->orders;
 		$data = array('user' => $user, 'orders' => $orders);
+
 		return View::make('account.show')->with($data);
 	}
 

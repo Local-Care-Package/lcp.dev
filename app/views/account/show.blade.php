@@ -38,33 +38,33 @@
 			</div>
 			<div class="col-md-9">
 				@if (count($user->orders) < 1)
-				<h3>You haven't sent a package yet!</h3>
-				<span><a class="btn btn-sm" href="{{{ action('HomeController@showPackages') }}}">Send a package today!</a></span>
+					<h3>You haven't sent a package yet!</h3>
+					<span><a class="btn btn-sm" href="{{{ action('HomeController@showPackages') }}}">Send a package today!</a></span>
 				@else
-				<h3>Care packages you've sent:</h3>
-				<table class="table table-striped">
-					<tr>
-						<th>Date</th>
-						<th>Order ID</th>
-						<th>Package</th>
-						<th>Price</th>
-						<th>Status</th>
-					</tr>
-					@foreach ($user->orders as $order)
-						@foreach ($order->packages as $package)
-					<tr>
-						<td>{{ $order->created_at->format('l, F jS, Y') }}</td>
-						<td>{{ $order->id }}</td>
-						<td>{{ $package->type_id }}</td>
-						<td> Price </td>
-						@if ($package->delivered_on == NULL)
-							<td>In Package</td> 
-						@else 
-						<td>{{ $package->delivered_on }} </td>
-						@endif
-					</tr>
+					<h3>Care packages you've sent:</h3>
+					<table class="table table-striped">
+						<tr>
+							<th>Date</th>
+							<th>Order ID</th>
+							<th>Package</th>
+							<th>Price</th>
+							<th>Status</th>
+						</tr>
+						@foreach ($orders as $order)
+							@foreach ($order->packages as $package)
+						<tr>
+							<td>{{ $order->created_at->format('l, F jS, Y') }}</td>
+							<td>{{ $order->id }}</td>
+							<td>{{ $package->packageType->description }}</td>
+							<td>{{ $package->packageType->price }}</td>
+							@if ($package->delivered_on == NULL)
+								<td>In Package</td> 
+							@else 
+							<td>{{ $package->delivered_on }} </td>
+							@endif
+						</tr>
+							@endforeach
 						@endforeach
-					@endforeach
 				@endif
 				</table>
 			</div>

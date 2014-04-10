@@ -31,7 +31,26 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		// grab form input and send to DB users table
-		// redirect to UsersController@show with their new id
+		// create the validator
+	    $validator = Validator::make(Input::all(), User::$rules);
+	  
+	    // attempt validation
+	    if ($validator->fails())
+	    {
+	    	Session::flash('errorMessage', 'Error: User not saved');
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } else {
+			$user = new User();
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->phone = Input::get('phone');
+			$user->password = Input::get('password');
+			$user->is_admin = false;
+			$user->save();
+			Session::flash('successMessage', 'Thanks for being a Local Care Package customer!');
+			return Redirect::action('HomeController@showAbout');
+		}
 	}
 
 	/**

@@ -26,3 +26,5 @@ Route::get('accessDenied', 'HomeController@accessDenied');
 Route::resource('/account', 'UsersController');
 
 Route::resource('/orders', 'OrdersController');
+
+Route::controller('password', 'RemindersController');

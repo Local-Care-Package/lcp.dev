@@ -37,8 +37,11 @@ class HomeController extends BaseController {
 		if (Auth::attempt(array('email' => $email, 'password' => $password))) 
 		{	    
 			Session::flash('successMessage', 'Login successful.');
-			return Redirect::intended('/');
-
+			if (Auth::user()->is_admin == true) {
+				return Redirect::action('UsersController@index');
+			} else {
+				return Redirect::intended('/');
+			}
 		} else {
 		    // login failed, go back to the login screen
 		    Session::flash('errorMessage', 'Login unsuccessful. Please try again.');
@@ -51,6 +54,11 @@ class HomeController extends BaseController {
 		Auth::logout();
 		Session::flash('successMessage', 'Logout successful.');
 		return Redirect::action('HomeController@showAbout');
+	}
+
+	public function accessDenied()
+	{
+		return View::make('accessDenied');
 	}
 
 }

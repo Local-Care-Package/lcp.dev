@@ -8,7 +8,7 @@ class UsersController extends \BaseController {
 		parent::__construct();
 
 		// Run an authentication filter before all methods except index and show
-		$this->beforeFilter('auth', array('except' => array('create')));
+		$this->beforeFilter('auth', array('except' => array('create', 'store')));
 
 		$this->beforeFilter('users.protect', array('only' => array('show', 'update', 'destroy')));
 	}
@@ -112,21 +112,19 @@ class UsersController extends \BaseController {
 	public function update($id)
 	{
 		$user = User::findOrFail($id);
-		// grab form input and send to DB users table
 		// create the validator
-	    $validator = Validator::make(Input::all(), User::$rules);
+	    $validator = Validator::make(Input::all(), User::$editRules);
 	  
 	    // attempt validation
 	    if ($validator->fails())
 	    {
-	    	Session::flash('errorMessage', 'Error: User not saved');
+	    	Session::flash('errorMessage', 'Error: User information did not save properly.');
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 			$user->first_name = Input::get('first_name');
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
 			$user->phone = Input::get('phone');
-			// $user->password = Input::get('password');
 			$user->is_admin = false;
 			$user->save();
 
@@ -134,7 +132,7 @@ class UsersController extends \BaseController {
         	$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to Local Care Package!');
     		});
 
-			Session::flash('successMessage', 'Thanks for being a Local Care Package customer!');
+			Session::flash('successMessage', 'Your information has successfully been updated!');
 			return Redirect::action('UsersController@show', '$user->id');
 		}
 	}

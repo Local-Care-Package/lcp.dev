@@ -14,10 +14,10 @@
 						{{{ $userInfo->phone }}}<br>
 					</p>
 					<p>
-						Package Sender Since: <em>{{{ $userInfo->created_at->format('l, F jS, Y') }}}</em><br>
+						Package Sender Since:<br><em>{{{ $userInfo->created_at->format('l, F jS, Y') }}}</em><br>
 					</p>
 					<p>	
-						Profile Last Updated On: <em>{{{ $userInfo->updated_at->format('l, F jS, Y') }}}</em><br>
+						Profile Last Updated On:<br><em>{{{ $userInfo->updated_at->format('l, F jS, Y') }}}</em><br>
 					</p>
 				</div>
 				<div>
@@ -37,6 +37,10 @@
 				<span><a href="{{{ action('UsersController@edit', $userInfo->id) }}}" class="btn btn-sm">Edit Account Info</a></span>
 			</div>
 			<div class="col-md-9">
+				@if (count($userInfo->orders) < 1)
+				<h3>You haven't sent a package yet!</h3>
+				<span><a class="btn btn-sm" href="{{{ action('HomeController@showPackages') }}}">Send a package today!</a></span>
+				@else
 				<h3>Care packages you've sent:</h3>
 				<table class="table table-striped">
 					<tr>
@@ -61,6 +65,7 @@
 					</tr>
 						@endforeach
 					@endforeach
+				@endif
 				</table>
 			</div>
 		</div>

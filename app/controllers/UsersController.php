@@ -48,6 +48,11 @@ class UsersController extends \BaseController {
 			$user->password = Input::get('password');
 			$user->is_admin = false;
 			$user->save();
+
+			Mail::send('emails.auth.userconfirm', array('first_name'=>Input::get('first_name')), function($message){
+        	$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to Local Care Package!');
+    		});
+
 			Session::flash('successMessage', 'Thanks for being a Local Care Package customer!');
 			return Redirect::action('HomeController@showAbout');
 		}

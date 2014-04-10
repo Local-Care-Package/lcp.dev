@@ -86,9 +86,9 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$userInfo = User::findOrFail($id);
+		$user = User::findOrFail($id);
 
-		return View::make('account.show')->with('userInfo', $userInfo);
+		return View::make('account.show')->with('user', $user);
 	}
 
 	/**
@@ -99,8 +99,8 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$userInfo = User::findOrFail($id);
-		return View::make('account.edit')->with('userInfo', $userInfo);
+		$user = User::findOrFail($id);
+		return View::make('account.edit')->with('user', $user);
 	}
 
 	/**
@@ -113,7 +113,9 @@ class UsersController extends \BaseController {
 	{
 		$user = User::findOrFail($id);
 		// create the validator
-	    $validator = Validator::make(Input::all(), User::$editRules);
+		$tempRules = User::$editRules;
+		$tempRules['email'] = $tempRules['email'] . ",email,$id";
+	    $validator = Validator::make(Input::all(), $tempRules);
 	  
 	    // attempt validation
 	    if ($validator->fails())
@@ -125,15 +127,10 @@ class UsersController extends \BaseController {
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
 			$user->phone = Input::get('phone');
-			$user->is_admin = false;
 			$user->save();
 
-			Mail::send('emails.auth.userconfirm', array('first_name'=>Input::get('first_name')), function($message){
-        	$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to Local Care Package!');
-    		});
-
 			Session::flash('successMessage', 'Your information has successfully been updated!');
-			return Redirect::action('UsersController@show', '$user->id');
+			return Redirect::action('UsersController@show', $user->id);
 		}
 	}
 
@@ -148,6 +145,14 @@ class UsersController extends \BaseController {
 		// delete account button to account view
 		// delete record from users table in DB
 		// flash success message once deleted, error if not
+		// return 'DELETE, Deletes a specific post';
+		User::findOrFail($id)->delete();
+		if (User::find($id)) {
+			Session::flash('errorMessage', 'Account delete was unsuccessful.');
+		} else {
+			Session::flash('successMessage', 'Your account was deleted successfully :( ');
+			return Redirect::action('HomeController@showAbout');
+		}
 	}
 
 }

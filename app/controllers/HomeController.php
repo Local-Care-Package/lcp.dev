@@ -22,31 +22,7 @@ class HomeController extends BaseController {
 
 	public function showPackages()
 	{
-		$packages = DB::table('packages')->get();
-		$data = array(
-			'packages'=>$packages
-		);
-		return View::make('packages')->with($data);
-	}
-
-	public function showCart()
-	{
-		return View::make('cart');
-	}
-
-	public function showCheckout()
-	{
-		return View::make('checkout');
-	}
-
-	public function showConfirmation()
-	{
-		return View::make('confirmation');
-	}
-
-	public function showAccount()
-	{
-		return View::make('account');
+		return View::make('packages');
 	}
 
 	public function showLogin()
@@ -75,11 +51,6 @@ class HomeController extends BaseController {
 		Auth::logout();
 		Session::flash('successMessage', 'Logout successful.');
 		return Redirect::action('HomeController@showAbout');
-	}
-
-	public function showRegister()
-	{
-		return View::make('register');
 	}
 
 }

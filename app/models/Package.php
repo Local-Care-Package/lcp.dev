@@ -24,5 +24,6 @@ class Package extends BaseModel {
 	public function order()
 	{
 		return $this->belongsToMany('Order');
+
 	}
 }

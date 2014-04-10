@@ -37,7 +37,6 @@
 							@else
 							<li><a href="{{{ action('HomeController@showLogin') }}}" role="button" class="btn btn-sm">Login / Register</a></li>
 							@endif
-							<li><a href="" role="button" class="btn btn-sm">Shopping Cart <i class="fa fa-shopping-cart"></i></a></li>
 						</ul>
 					</div>
 				</div>

@@ -91,6 +91,15 @@ class UsersController extends \BaseController {
 		return View::make('account.show')->with('user', $user);
 	}
 
+	public function showOrderHistory()
+	{
+		$user = Auth::user();
+
+		$orders = $user->orders;
+		$data = array('user' => $user, 'orders' => $orders);
+		return View::make('account.show')->with($data);
+	}
+
 	/**
 	 * Show the form for editing the specified resource.
 	 *

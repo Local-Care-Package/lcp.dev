@@ -4,4 +4,6 @@
 
 		<h1>Show Order Confirmation!</h1>
 
+		<span id='confirm'></span>
+
 @stop

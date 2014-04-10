@@ -9,8 +9,9 @@
 		</div>	
 		<!-- START FORM -->
 		<div class="row">
-			<div class="row">
-			<div class="col-md-6">
+		
+		<div class="col-md-6">
+				<div class="row">
 				{{ Form::open(array('id' => 'billing-form', 'class' => 'form-horizontal' )) }}
 
 				<div class="form-group">
@@ -21,14 +22,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">		
+			<div class="row">		
 				<div class="form-group">
-					{{ Form::label('cvc', 'CVC', 'Security Code', array('class' => 'col-sm-3 control-label')) }}
 					<div class="col-sm-9">
+						{{ Form::label('cvc', 'CVC', 'Security Code', array('class' => 'col-sm-3 control-label')) }}
 						<input type = "text" data-stripe = "cvc">
 					</div>
 				</div>
-		</div>
 		<div class="row">		
 				<div class="form-group">
 					{{ Form::label('month', 'Expiration Month', array('class' => 'col-sm-3 control-label')) }}
@@ -63,6 +63,13 @@
 						{{ Form::text('last_name', null, array('class' => 'form-control')) }}
 					</div>
 				</div>
+
+		<div class="form-group">
+					{{ Form::label('email', 'Email', array('class' => 'col-sm-3 control-label' )) }}
+					<div class="col-sm-9">
+						{{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'ilovelcp@lcp.com')) }}
+					</div>
+		</div>
 
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-9">

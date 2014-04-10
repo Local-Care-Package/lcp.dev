@@ -1,5 +1,7 @@
 <?php
 
+App::bind('lcp.dev\app\billing', 'lcp.dev\app\billing\stripeBilling');
+
 class HomeController extends BaseController {
 
 	/*
@@ -33,7 +35,18 @@ class HomeController extends BaseController {
 	public function showCheckout()
 	{
 		return View::make('checkout');
-		// return 'something';
+	}
+
+	public function buyCheckout()
+	{
+		$billing = App::make('lcp.dev\app\billing\billingInterface');
+
+		// return 
+
+		return $billing->charge([
+		'email' => Input::get('email'),
+		'token' => Input::get('token')
+		]);
 	}
 
 	public function confirmation()
@@ -84,9 +97,6 @@ class HomeController extends BaseController {
 		return View::make('register');
 	}
 
-	public function buy()
-	{
-		return dd(Input::all());
-	}
+
 
 }

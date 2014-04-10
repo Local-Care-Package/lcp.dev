@@ -41,6 +41,11 @@ div.logo {
 	color: #FFFFFF;
 }
 
+.btn-danger {
+	background-color: #FF0000;
+	color: #FFFFFF;	
+}
+
 .hlinks {
 	float: right;
 }

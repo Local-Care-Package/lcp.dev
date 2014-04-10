@@ -2,6 +2,17 @@
 
 class UsersController extends \BaseController {
 
+	public function __construct()
+	{
+		// Include parent constructor
+		parent::__construct();
+
+		// Run an authentication filter before all methods except index and show
+		$this->beforeFilter('auth', array('except' => array('create')));
+
+		$this->beforeFilter('users.protect', array('only' => array('show', 'update', 'destroy')));
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,8 +20,17 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		// if ADMIN show view of users
-		// else show access denied
+		// Check if a user is an admin, if so, allow them to progress to index page
+		if(Auth::user()->is_admin) {
+			// $users = User::all()->with('orders')->orderBy('created_at', 'desc')->paginate(10);
+			// $data = array(
+			// 	'users'=>$users
+			// );
+			return View::make('account.index');
+		} else {
+		// If a user is not the admin, push them to the show page for their own page
+			return Redirect::action('HomeController@accessDenied');
+		}
 	}
 
 	/**
@@ -20,7 +40,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('register');
+		return View::make('account.register');
 	}
 
 	/**
@@ -67,15 +87,8 @@ class UsersController extends \BaseController {
 	public function show($id)
 	{
 		$userInfo = User::findOrFail($id);
-		// $orders = $query->('where', )
-		// $query = Post::with('user');
-		// $orderHistory = Order::all();
-		$data = [
-			'userInfo' => $userInfo,
-			// 'orderHistory' => $orderHistory
-		];
 
-		return View::make('account')->with($data);
+		return View::make('account.show')->with('userInfo', $userInfo);
 	}
 
 	/**
@@ -87,7 +100,7 @@ class UsersController extends \BaseController {
 	public function edit($id)
 	{
 		$userInfo = User::findOrFail($id);
-		return View::make('edit-account')->with('userInfo', $userInfo);
+		return View::make('account.edit')->with('userInfo', $userInfo);
 	}
 
 	/**
@@ -98,9 +111,32 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		// grab input and save changes to users table (same as create)
-		// redirect to account with updated info and success message
-		// if error, flash error message
+		$user = User::findOrFail($id);
+		// grab form input and send to DB users table
+		// create the validator
+	    $validator = Validator::make(Input::all(), User::$rules);
+	  
+	    // attempt validation
+	    if ($validator->fails())
+	    {
+	    	Session::flash('errorMessage', 'Error: User not saved');
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } else {
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->phone = Input::get('phone');
+			// $user->password = Input::get('password');
+			$user->is_admin = false;
+			$user->save();
+
+			Mail::send('emails.auth.userconfirm', array('first_name'=>Input::get('first_name')), function($message){
+        	$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to Local Care Package!');
+    		});
+
+			Session::flash('successMessage', 'Thanks for being a Local Care Package customer!');
+			return Redirect::action('UsersController@show', '$user->id');
+		}
 	}
 
 	/**

@@ -9,15 +9,15 @@
 				<h3>Account Info:</h3>
 				<div>
 					<p>
-						<strong>{{{ Auth::user()->first_name }}} {{{ Auth::user()->last_name }}}</strong><br>
-						{{{ Auth::user()->email }}}<br>
-						{{{ Auth::user()->phone }}}<br>
+						<strong>{{{ $userInfo->first_name }}} {{{ $userInfo->last_name }}}</strong><br>
+						{{{ $userInfo->email }}}<br>
+						{{{ $userInfo->phone }}}<br>
 					</p>
 					<p>
-						Package Sender Since: <em>{{{ Auth::user()->created_at->format('l, F jS, Y') }}}</em><br>
+						Package Sender Since: <em>{{{ $userInfo->created_at->format('l, F jS, Y') }}}</em><br>
 					</p>
 					<p>	
-						Profile Last Updated On: <em>{{{ Auth::user()->updated_at->format('l, F jS, Y') }}}</em><br>
+						Profile Last Updated On: <em>{{{ $userInfo->updated_at->format('l, F jS, Y') }}}</em><br>
 					</p>
 				</div>
 				<div>
@@ -34,7 +34,7 @@
 						Expires 00/00<br>
 					</p>
 				</div>
-				<span><a href="{{{ action('UsersController@edit') }}}" class="btn btn-sm">Edit Account Info</a></span>
+				<span><a href="{{{ action('UsersController@edit', $userInfo->id) }}}" class="btn btn-sm">Edit Account Info</a></span>
 			</div>
 			<div class="col-md-9">
 				<h3>Care packages you've sent:</h3>
@@ -52,7 +52,7 @@
 						<td>{{ $order->created_at->format('l, F jS, Y') }}</td>
 						<td>{{ $order->id }}</td>
 						<td>{{ $package->type_id }}</td>
-						<td>{{ $package->price }}</td>
+						<td> Price </td>
 						@if ($package->delivered_on == NULL)
 							<td>In Package</td> 
 						@else 

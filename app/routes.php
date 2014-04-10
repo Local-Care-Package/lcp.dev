@@ -21,6 +21,8 @@ Route::post('login', 'HomeController@doLogin');
 
 Route::get('logout', 'HomeController@logout');
 
-Route::resource('/users', 'UsersController');
+Route::get('accessDenied', 'HomeController@accessDenied');
+
+Route::resource('/account', 'UsersController');
 
 Route::resource('/orders', 'OrdersController');

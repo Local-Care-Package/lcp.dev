@@ -44,6 +44,15 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('users.protect', function()
+{
+	$param = Request::segment(2);
+	$user = User::find($param);
+	if (Auth::user()->id != $user->id && Auth::user()->is_admin != true) {
+		return Redirect::action('HomeController@accessDenied');
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

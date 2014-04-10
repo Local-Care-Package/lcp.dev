@@ -11,7 +11,7 @@ class PackageTableSeeder extends DatabaseSeeder
           $packageType = Package::create(array(
             'id' => "$i",
             'description' => $faker->sentence($nbWords = 6),
-            'type_id' => $faker->randomNumber(1, 3),
+            'package_type_id' => $faker->randomNumber(1, 3),
             'order_id' => $faker->randomNumber(1, 10)
 
           ));

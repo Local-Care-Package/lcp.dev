@@ -87,8 +87,10 @@ class UsersController extends \BaseController {
 	public function show($id)
 	{
 		$user = User::findOrFail($id);
+		$orders = $user->orders;
+		$data = array('user' => $user, 'orders' => $orders);
 
-		return View::make('account.show')->with('user', $user);
+		return View::make('account.show')->with($data);
 	}
 
 	/**

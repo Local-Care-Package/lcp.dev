@@ -8,9 +8,15 @@ class OrdersController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
-	{		
+	{	
+
+		$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(4);
+
+		$data = array(
+			'orders'=>$orders
+		);
 		// view all orders if ADMIN
-		// else access denied
+		return View::make('orders.index')->with($data);	;
 	}
 
 	/**
@@ -43,6 +49,7 @@ class OrdersController extends \BaseController {
 	public function show($id)
 	{
 		// show order/package details (for order history, confirm email)
+		return View::make('orders.show');
 	}
 
 	/**
@@ -65,6 +72,7 @@ class OrdersController extends \BaseController {
 	public function update($id)
 	{
 		// add more items to cart ?
+		return Redirect::action('OrdersController@show');
 	}
 
 	/**
@@ -76,6 +84,7 @@ class OrdersController extends \BaseController {
 	public function destroy($id)
 	{
 		// delete item from cart/order
+		return Redirect::action('OrdersController@index');
 	}
 
 }

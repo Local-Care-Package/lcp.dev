@@ -59,20 +59,22 @@
 							<th></th>
 						</tr>
 						@foreach ($orders as $order)
-							@foreach ($order->packages as $package)
 						<tr>
 							<td>{{ $order->created_at->format('l, F jS, Y') }}</td>
 							<td>{{ $order->id }}</td>
-							<td>{{ $package->packageType->description }}</td>
-							<td>${{ $package->packageType->price }}</td>
-							@if ($package->delivered_on == NULL)
-								<td>In Package</td> 
-							@else 
-							<td>{{ $package->delivered_on }} </td>
+							<td>{{ $order->packageType->description }}</td>
+							<td>${{ $order->packageType->price }}</td>
+							@if ($order->delivered_at == NULL && $order->packaged_at == NULL)
+								<td>Processing Order</td> 
 							@endif
-							<td style="text-align: center"><a href="" class="btn btn-sm">See Details</a></td>
+							@if ($order->delivered_at == NULL && $order->packaged_at != NULL)
+								<td>Ready for Delivery</td> 
+							@endif
+							@if ($order->delivered_at != NULL && $order_packaged_at != NULL)
+							<td>Package Delivered At: {{ $order->delivered_at }} </td>
+							@endif
+							<td style="text-align: center"><a href="{{{ action('OrdersController@show', $user->id) }}}" class="btn btn-sm">See Details</a></td>
 						</tr>
-							@endforeach
 						@endforeach
 				@endif
 				</table>

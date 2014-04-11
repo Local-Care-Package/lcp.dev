@@ -1,6 +1,6 @@
 <?php
 
-// App::bind('billing\billingInterface', 'billing\stripeBilling');
+//  App::bind('app\billing\billingInterface', 'app\billing\stripeBilling');
 
 /*
 |--------------------------------------------------------------------------

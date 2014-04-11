@@ -1,8 +1,8 @@
 <?php
 
-App::bind('lcp.dev\app\billing', 'lcp.dev\app\billing\stripeBilling');
+App::bind('app\billing\billingInterface', 'app\billing\stripeBilling');
 
-class HomeController extends BaseController {
+class HomeController extends BaseController {bin
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,15 +39,29 @@ class HomeController extends BaseController {
 
 	public function buyCheckout()
 	{
-		$billing = App::make('lcp.dev\app\billing\billingInterface');
+		$billing = App::make('app\billing\billingInterface');
 
-		// return 
-
+		try
+		{
+	
 		return $billing->charge([
 		'email' => Input::get('email'),
-		'token' => Input::get('token')
+		'stripeToken' => Input::get('stripeToken')
 		]);
-	}
+
+		$user = User::first();
+		$user->biling_id = $customerId;
+		$user->save();
+		}
+
+		catch(Exception $e)
+		{
+
+			return Redirect::refresh()->withFlashMessage($e->getMessage())->withInput();
+		}
+
+		return 'Charge was successful';
+	});
 
 	public function confirmation()
 	{

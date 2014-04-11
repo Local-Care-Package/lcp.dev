@@ -18,12 +18,12 @@ class Package extends BaseModel {
 
 	public function packageType()
 	{
-		return $this->hasOne('PackageType');
+		return $this->belongsTo('PackageType');
 	}
 
 	public function order()
 	{
-		return $this->belongsToMany('Order');
+		return $this->belongsTo('Order');
 
 	}
 }

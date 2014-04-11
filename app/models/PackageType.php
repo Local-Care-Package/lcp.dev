@@ -7,7 +7,7 @@ class PackageType extends BaseModel {
 	/**
 	 * Defines posts table
 	 */
-    protected $table = 'package_type';
+    protected $table = 'package_types';
 
 	/**
 	 * Defines rules for orders table
@@ -18,6 +18,6 @@ class PackageType extends BaseModel {
 
 	public function package()
 	{
-		return $this->belongsTo('Package');
+		return $this->hasMany('Package');
 	}
 }

@@ -10,10 +10,12 @@ class OrdersController extends \BaseController {
 	public function index()
 	{	
 
-		$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(4);
+		$orders = Order::with('user')->orderBy('created_at', 'desc');
+		$packages = $orders->packages;
 
 		$data = array(
-			'orders'=>$orders
+			'orders'   => $orders,
+			'packages' => $packages
 		);
 		// view all orders if ADMIN
 		return View::make('orders.index')->with($data);	;
@@ -83,6 +85,40 @@ class OrdersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+		// delete item from cart/order
+		return Redirect::action('OrdersController@index');
+	}
+
+	/**
+	 * Update a specific order to be packaged.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function order_packaged_at($id)
+	{
+		// Update an order to be packaged
+		$order = Order::findOrFail($id);
+
+		$order->packaged_at = Carbon::now();
+		$order->save();
+
+		// Add a success message
+		return Redirect::action('OrdersController@index');
+	}
+
+	/**
+	 * Update a specific order to be delivered.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function order_delivered_at($id)
+	{
+		// Update an order to be packaged
+		$order = Order::findOrFail($id);
+		$order->ordered_at = Carbon::now();
+		$order->save();
 		// delete item from cart/order
 		return Redirect::action('OrdersController@index');
 	}

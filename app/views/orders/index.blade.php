@@ -12,7 +12,10 @@
 				<th>State</th>
 				<th>Zip</th>
 				<th>Gift Message</th>
-				<th>Status</th>
+				<th>Packaged Date</th>
+				<th>Package</th>
+				<th>Delivered Date</th>
+				<th>Deliver</th>
 			</tr>
 	    	@foreach ($orders as $order)
 	    	<tr>
@@ -22,7 +25,11 @@
 	    		<td>{{{$order->state}}}</td>
 	    		<td>{{{$order->zip}}}</td>
 	    		<td>{{{$order->gift_message}}}</td>
-	    		<td>Status - To Be Calculated</td>
+	    		<td>{{{$package->packaged_at}}}</td>
+	    		<td><a href="">Package</a></td>
+	    		<td>{{{$package->delivered_at}}}</td>
+	    		<td><a href="">Deliver</a></td>
+	    		
 	    	</tr>
 	    	@endforeach
 		</table>

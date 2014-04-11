@@ -51,7 +51,8 @@ class OrdersController extends \BaseController {
 	public function show($id)
 	{
 		// show order/package details (for order history, confirm email)
-		return View::make('orders.show');
+		$order = Order::findOrFail($id);
+		return View::make('orders.show')->with('order', $order);
 	}
 
 	/**

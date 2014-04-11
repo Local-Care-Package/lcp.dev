@@ -1,8 +1,12 @@
-<?php namespace lcp.dev\app\billing;
+<?php namespace \app\billing;
 
 use Stripe;
 use Stripe_Charge;
+use Stripe_Customer;
+use Stripe_InvalidRequestError;
+use Stripe_CardError;
 use Config;
+use Exception;
 
 class stripeBilling implements billingInterface { 
 
@@ -15,21 +19,35 @@ class stripeBilling implements billingInterface {
 	{
 		try
 		{
-
-			return Stripe_Charge::create([
-				'amount' => 25000,
-				'currency' => 'usd',
+			$customer = Stripe_Customer::create([
+				'number' => $date['stripeToken'],
 				'description' => $data['email'],
-				'number' => $data['stripeToken'],
 				'cvc' => $data['cvc'],
 				'exp_month' => $data['exp-month'],
 				'exp_year' => $data['exp-year']
 			]);
+
+			Stripe_Charge::create([
+				'customer' => $customer->id,
+				'amount' => 25000,
+				'currency' => 'usd',
+
+			]);
+
+			return $customer->id;
+		}
+
+		catch (Stripe_InvalidRequestError $e)
+		
+		{
+			throw new Exception($e->getMessage());
 		}
 
 		catch(Stripe_CardError $e)
+		
 		{
-			dd('card was declined');
+			throw new Exception($e->getMessage());
 
 		}
 	}
+}

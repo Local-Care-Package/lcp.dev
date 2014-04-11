@@ -11,6 +11,7 @@ class OrderTableSeeder extends DatabaseSeeder
           $order = Order::create(array(
             'id' => "$i",
             'user_id' => $faker->randomNumber(2, 10),
+            'recipient_name' => $faker->name,
             'street' => $faker->streetAddress,
             'city' => $faker->city,
             'state' => $faker->stateAbbr,

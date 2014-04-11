@@ -31,6 +31,7 @@ class InitialTableMigration extends Migration {
 		    $table->increments('id')->unsigned();
 		    $table->integer('user_id')->unsigned();
 		    $table->foreign('user_id')->references('id')->on('users');
+		    $table->string('recipient_name', 100);
 		    $table->string('street', 100);
 		    $table->string('city', 100);
 		    $table->string('state', 100);

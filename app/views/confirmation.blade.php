@@ -4,6 +4,13 @@
 
 		<h1>Show Order Confirmation!</h1>
 
-		<span id='confirm'></span>
+		
+
+		@if (Session::has('flash_message'))
+			<div class="flash_message" id='confirm'>
+				{{ Session::get('flash_message') }}
+			</div>
+		@endif
+		
 
 @stop

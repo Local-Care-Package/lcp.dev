@@ -20,6 +20,10 @@ h1, h2, h3, h4 {
 	font-family: 'Roboto', sans-serif;
 }
 
+.blue-text {
+	color: #73CFE8;
+}
+
 header {
 	padding: 10px;
 }

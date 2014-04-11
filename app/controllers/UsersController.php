@@ -152,7 +152,7 @@ class UsersController extends \BaseController {
 		if (User::find($id)) {
 			Session::flash('errorMessage', 'Account delete was unsuccessful.');
 		} else {
-			Session::flash('successMessage', 'Your account was deleted successfully :( ');
+			Session::flash('successMessage', 'Your account was deleted successfully');
 			return Redirect::action('HomeController@showAbout');
 		}
 	}

@@ -9,6 +9,8 @@ class PackageType extends BaseModel {
 	 */
     protected $table = 'package_types';
 
+    protected $softDelete = true;
+
 	/**
 	 * Defines rules for orders table
 	 */
@@ -16,8 +18,8 @@ class PackageType extends BaseModel {
 	    
 	);
 
-	public function package()
+	public function order()
 	{
-		return $this->hasMany('Package');
+		return $this->hasMany('Order');
 	}
 }

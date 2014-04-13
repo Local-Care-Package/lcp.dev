@@ -21,7 +21,7 @@
 						<li>Price</li>
 						<li>Price</li>
 					</ul>
-				<span><a role="button" class="btn btn-sm" href="">Add to Cart</a></span>
+				<span><a role="button" class="btn btn-sm" href="">Send Package</a></span>
 			</div>
 			<div class="col-md-4">
 				<img src="/img/package2.jpg">
@@ -31,7 +31,7 @@
 						<li>Price</li>
 						<li>Price</li>
 					</ul>
-				<span><a role="button" class="btn btn-sm" href="">Add to Cart</a></span>
+				<span><a role="button" class="btn btn-sm" href="">Send Package</a></span>
 			</div>
 			<div class="col-md-4">
 				<img src="/img/package2.jpg">
@@ -41,7 +41,7 @@
 						<li>Price</li>
 						<li>Price</li>
 					</ul>
-				<span><a role="button" class="btn btn-sm" href="">Add to Cart</a></span>
+				<span><a role="button" class="btn btn-sm" href="">Send Package</a></span>
 			</div>
 		</div>
 

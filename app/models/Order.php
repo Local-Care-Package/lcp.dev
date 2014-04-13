@@ -9,6 +9,8 @@ class Order extends BaseModel {
 	 */
     protected $table = 'orders';
 
+    protected $softDelete = true;
+
 	/**
 	 * Defines rules for orders table
 	 */
@@ -29,8 +31,8 @@ class Order extends BaseModel {
 	 *
 	 * @var array
 	 */
-	public function packages()
+	public function packageType()
 	{
-		return $this->hasMany('Package');
+		return $this->belongsTo('PackageType');
 	}
 }

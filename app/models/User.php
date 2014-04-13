@@ -13,6 +13,8 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
+	protected $softDelete = true;
+
 	/**
 	 * Defines rules for user table
 	 */

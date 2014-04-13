@@ -1,5 +1,6 @@
 <?php
 
+
 class HomeController extends BaseController {
 
 	/*
@@ -25,6 +26,58 @@ class HomeController extends BaseController {
 		return View::make('packages');
 	}
 
+<<<<<<< HEAD
+=======
+	public function showCart()
+	{
+		return View::make('cart');
+	}
+
+	public function showCheckout()
+	{
+		return View::make('checkout');
+	}
+
+	public function buyCheckout()
+	{
+
+		Stripe::setApiKey("sk_test_tmZKPpxGIafBRaS640pw8WXC");
+
+		// Get the credit card details submitted by the form
+		$token = $_POST['stripeToken'];
+
+		// Create the charge on Stripe's servers - this will charge the user's card
+		try {
+		$charge = Stripe_Charge::create(array(
+		  "amount" => 2500, // amount in cents, again
+		  "currency" => "usd",
+		  "card" => $token,
+		  "description" => "payinguser@example.com")
+		);
+		return Redirect::action('HomeController@showConfirmation');
+
+		} catch(Stripe_CardError $e) {
+
+		}
+	} 
+
+
+	public function confirmation()
+	{
+		
+	}
+
+	public function showConfirmation()
+	{
+		return View::make('confirmation');
+	}
+
+	public function showAccount()
+	{
+		return View::make('account');
+	}
+
+>>>>>>> ken
 	public function showLogin()
 	{
 		return View::make('login');
@@ -60,5 +113,8 @@ class HomeController extends BaseController {
 	{
 		return View::make('accessDenied');
 	}
+
+
+
 
 }

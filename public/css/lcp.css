@@ -1,4 +1,7 @@
 /* CUSTOM CSS FOR LCP */
+body, html, #wrapper {
+	min-height: 100%;
+}
 
 body {
 	font-family: Helvetica, Arial, sans-serif;
@@ -38,6 +41,11 @@ div.logo {
 
 .social {
 	font-size: 2em;
+}
+
+.status-icon {
+	font-size: 3em;
+	padding-top: 10px;
 }
 
 .btn {
@@ -89,11 +97,18 @@ div.logo {
 	margin-bottom: 20px;
 }
 
+#wrapper {
+	overflow: auto;
+	padding-bottom: 200px;
+}
+
 #footer {
 	height: 200px;
 	width: 100%;
 	position: relative;
 	padding-top: 10px;
+	margin-top: -200px;
+	clear: both;
 	background-color: #73CFE8;
 }
 

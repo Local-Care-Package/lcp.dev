@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>HERE ADMIN INDEX</h1>
-</body>
-</html>
+@extends('layouts.admin-master')
+
+@section('main-content')
+		<h1>User Index Page</h1>
+@stop

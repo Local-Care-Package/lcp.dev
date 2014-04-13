@@ -38,7 +38,7 @@
 			</div>
 			<div class="col-md-4">
 				<h4 class="blue-text"></h4>
-				<img src="/img/package2.jpg">
+				<img src="/img/package.png">
 			</div>
 		</div><hr>
 

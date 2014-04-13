@@ -30,6 +30,11 @@ class HomeController extends BaseController {
 		return View::make('login');
 	}
 
+	public function showAdmin()
+	{
+		return View::make('dashboard');
+	}
+
 	public function doLogin()
 	{
 		$email = Input::get('email');
@@ -38,7 +43,7 @@ class HomeController extends BaseController {
 		{	    
 			Session::flash('successMessage', 'Login successful.');
 			if (Auth::user()->is_admin == true) {
-				return Redirect::action('UsersController@index');
+				return Redirect::action('HomeController@showAdmin');
 			} else {
 				return Redirect::intended('/');
 			}

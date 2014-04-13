@@ -19,15 +19,15 @@
 				<strong>Personal Message</strong><br>
 				{{ $order->gift_message }}
 			</td>
-			<td>
+			<td style="text-align: center">
 				@if ($order->packaged_at == NULL && $order->delivered_at == NULL)
-				<i class="fa fa-tasks"></i><br>Procesing Order</p>
+				<i class="fa fa-tasks status-icon blue-text"></i><br>Procesing Order</p>
 				@endif
 				@if ($order->packaged_at != NULL && $order->delivered_at == NULL)
-				<i class="fa fa-gift"></i><br>Ready For Delivery!</span>
+				<i class="fa fa-truck status-icon blue-text"></i><br>Ready For Delivery!</span>
 				@endif
 				@if ($order->packaged_at != NULL && $order->delivered_at != NULL)
-				<span class="label label-success">Delivered!</span>
+				<i class="fa fa-gift status-icon blue-text"></i>Delivered!<br>{{ $order->delivered_at }}</span>
 				@endif
 			</td>
 		</tr>

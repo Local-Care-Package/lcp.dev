@@ -18,6 +18,7 @@
 
 </head>
 <body>
+<div id="wrapper">	
 
 <!-- HEADER -->	
 	<header>
@@ -80,7 +81,7 @@
 		@yield('main-content')
 	</div>
 <!-- END MAIN -->
-
+</div>
 <!-- FOOTER -->
 	<div id="footer">
       <div class="container">

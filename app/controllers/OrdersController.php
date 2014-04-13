@@ -26,7 +26,7 @@ class OrdersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('checkout');
+		return View::make('orders.create');
 	}
 
 	/**
@@ -36,8 +36,31 @@ class OrdersController extends \BaseController {
 	 */
 	public function store()
 	{
-		// save checkout info to DB
-		return View::make('confirmation');
+		// NOTE THIS REQUIRES A LOGGED IN USER TO CREATE CUSTOMER ID FOR ORDER
+		$data = INPUT::all();
+		Log::info($data);
+
+		$order = new Order;
+		$validator = Validator::make(Input::all(), Order::$rules);
+	  
+	    // attempt validation
+	    if ($validator->fails())
+	    {
+	    	Session::flash('errorMessage', 'Error: Order not processed');
+	        return Redirect::back()->withInput()->withErrors($validator);
+
+	    } else {
+	    	$order->user_id = Auth::user()->id;
+	    	$order->recipient_name = Input::get('recipient_name');
+	    	$order->street = Input::get('street');
+	    	$order->city = Input::get('city');
+	    	$order->state = Input::get('state');
+	    	$order->zip = Input::get('zip');
+	    	$order->gift_message = Input::get('gift_message');
+	    	$order->package_type_id = Input::get('package_type_id');
+	    	$order->save();
+			return View::make('orders.show')->with('order', $order);
+		}
 	}
 
 	/**

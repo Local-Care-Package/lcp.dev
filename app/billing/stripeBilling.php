@@ -1,4 +1,4 @@
-<?php namespace \app\billing;
+<?php namespace \App\Billing;
 
 use Stripe;
 use Stripe_Charge;
@@ -8,7 +8,7 @@ use Stripe_CardError;
 use Config;
 use Exception;
 
-class stripeBilling implements billingInterface { 
+class StripeBilling { 
 
 	public _construct()
 	{
@@ -20,11 +20,11 @@ class stripeBilling implements billingInterface {
 		try
 		{
 			$customer = Stripe_Customer::create([
-				'number' => $date['stripeToken'],
-				'description' => $data['email'],
+				'card_number' => $data['stripeToken'],
+				'email' => $data['email'],
 				'cvc' => $data['cvc'],
-				'exp_month' => $data['exp-month'],
-				'exp_year' => $data['exp-year']
+				'month' => $data['exp-month'],
+				'year' => $data['exp-year']
 			]);
 
 			Stripe_Charge::create([

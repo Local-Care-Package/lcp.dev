@@ -33,3 +33,7 @@ Route::post('login', 'HomeController@doLogin');
 Route::get('logout', 'HomeController@logout');
 
 Route::get('register', 'HomeController@showRegister');
+
+
+
+

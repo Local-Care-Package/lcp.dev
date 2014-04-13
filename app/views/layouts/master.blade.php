@@ -114,6 +114,7 @@
 <script src="https://js.stripe.com/v2/"></script>
 
 
+
 <script>
   setTimeout(function() {
     $('.session-error').fadeOut(700);

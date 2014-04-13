@@ -6,11 +6,7 @@
 
 		
 
-		@if (Session::has('flash_message'))
-			<div class="flash_message" id='confirm'>
-				{{ Session::get('flash_message') }}
-			</div>
-		@endif
+		<h1> Confirmation Page</h1>
 		
 
 @stop

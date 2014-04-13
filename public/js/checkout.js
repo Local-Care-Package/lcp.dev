@@ -1,13 +1,16 @@
 (function() {
 
 	var StripeBilling = {
+		console.log('hit');
 		init: function() {
+			console.log('hit');
 			this.form = $('#billing-form');
 			this.submitButton = this.form.find('input[type=submit]');
 			this.submitButtonValue = this.submitButtonVal();
 
 			var stripeKey = $('meta[name="publishable-key"]').attr('content');
 			Stripe.setPublishableKey(stripeKey);
+			console.log('hit');
 
 			this.bindEvents();
 		}, 
@@ -39,7 +42,9 @@
 
 			}).appendTo(this.form);
 
-			// this.form[0].submit();
+			this.form[0].submit();
+
+
 
 		}
 	};

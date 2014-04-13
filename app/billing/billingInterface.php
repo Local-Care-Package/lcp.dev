@@ -1,6 +1,6 @@
-<?php namespace billing;
+<?php namespace Billing;
 
-interface billingInterface {
+interface BillingInterface {
 
 	public function charge(array $data);
 }

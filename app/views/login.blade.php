@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('main-content')
-
+	<div class="container">
 		<h1>Returning customer? <small>Sign in!</small></h1><hr>
 
 			<div class="col-md-6">
@@ -31,4 +31,5 @@
 			<!-- END FORM -->
 		<div class="col-md-6">
 		</div>
+	</div>
 @stop

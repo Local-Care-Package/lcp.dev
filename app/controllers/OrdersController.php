@@ -142,7 +142,11 @@ class OrdersController extends \BaseController {
 	public function destroy($id)
 	{
 		// delete item from cart/order
-		return Redirect::action('OrdersController@index');
+		if (Auth::user()->is_admin) {
+			return Redirect::action('OrdersController@index');
+		} else {
+			return Redirect::action('HomeController@showPackages');
+		}
 	}
 
 }

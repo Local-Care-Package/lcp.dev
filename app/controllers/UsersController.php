@@ -164,7 +164,11 @@ class UsersController extends \BaseController {
 			Session::flash('errorMessage', 'Account delete was unsuccessful.');
 		} else {
 			Session::flash('successMessage', 'Your account was deleted successfully');
-			return Redirect::action('HomeController@showAbout');
+			if (Auth::user()->is_admin) {
+				return Redirect::action('UsersController@index');
+			} else {
+				return Redirect::action('HomeController@showAbout');
+			}
 		}
 	}
 

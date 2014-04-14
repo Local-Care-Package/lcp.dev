@@ -22,12 +22,18 @@ class HomeController extends BaseController {
 
 	public function showPackages()
 	{
-		return View::make('packages');
+		$packages = PackageType::all();
+		return View::make('packages')->with('packages', $packages);
 	}
 
 	public function showLogin()
 	{
 		return View::make('login');
+	}
+
+	public function showAdmin()
+	{
+		return View::make('dashboard');
 	}
 
 	public function doLogin()
@@ -38,7 +44,7 @@ class HomeController extends BaseController {
 		{	    
 			Session::flash('successMessage', 'Login successful.');
 			if (Auth::user()->is_admin == true) {
-				return Redirect::action('UsersController@index');
+				return Redirect::action('HomeController@showAdmin');
 			} else {
 				return Redirect::intended('/');
 			}

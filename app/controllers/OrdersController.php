@@ -10,10 +10,11 @@ class OrdersController extends \BaseController {
 	public function index()
 	{	
 
-		$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(10);
-		
+		$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(20);
+		// $users = User::with('order');
 		$data = array(
-			'orders'   => $orders,
+			// 'users' => $users,
+			'orders'   => $orders
 		);
 		// view all orders if ADMIN
 		return View::make('orders.index')->with($data);	;

@@ -1,9 +1,8 @@
 @extends('layouts.master')
 
 @section('main-content')
-
-		<h1>Returning customer? <small>Sign in!</small></h1>
-				<hr>
+	<div class="container">
+		<h1>Returning customer? <small>Sign in!</small></h1><hr>
 
 			<div class="col-md-6">
 			<!-- START FORM -->
@@ -22,16 +21,15 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
+						<h4>Don't have an account with us yet? <small>Click <a href="{{{ action('UsersController@create') }}}">here</a> to make one!</h4>
+						<p>Forgot your password? Click <a href="{{ action('RemindersController@getRemind') }}">here</a> to reset it.</p>
 						{{ Form::submit('Login', array('class' => 'btn btn-sm'))}}
 					</div>
-					<div class="col-sm-4"></div>
 				</div>
 				{{ Form::close() }}
 			</div>
 			<!-- END FORM -->
-		<a href="{{ action('RemindersController@getRemind') }}">RESET PASSWORD</a>
 		<div class="col-md-6">
-			<h3>Not a member yet?</h3>
-			<p><a href="{{{ action('UsersController@create') }}}">Click here to register!</a></p>
 		</div>
+	</div>
 @stop

@@ -31,6 +31,8 @@ Route::get('account', 'HomeController@showAccount');
 >>>>>>> ken
 Route::get('login', 'HomeController@showLogin');
 
+Route::get('dashboard', 'HomeController@showAdmin');
+
 Route::post('login', 'HomeController@doLogin');
 
 Route::get('logout', 'HomeController@logout');

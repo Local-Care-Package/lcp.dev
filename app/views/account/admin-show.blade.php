@@ -1,9 +1,18 @@
-@extends('layouts.master')
+@extends('layouts.admin-master')
 
-@section('main-content')
+@section('header')
+	<div class="row">
+		<div class="container">
+			<ul>
+				<h1>{{{ $user->first_name }}} {{{ $user->last_name }}}</h1>
+				<li class="admin-action"><a class="blue-text" href="{{{ action('UsersController@index') }}}"> Back to All Customers</a></li><hr>
+			</ul>
+		</div>
+	<div>
+@stop
 
-		<h1>Good to see you again, {{{ Auth::user()->first_name }}}!</h1><hr>
-
+@section('main-content')		
+	<div class="container">	
 		<div class="row">
 			<div class="col-md-4">
 					<h4 class="blue-text">User Account Information</h4>
@@ -36,17 +45,13 @@
 					</p>
 					<a href="" class="btn btn-sm">Edit Billing Info</a>
 			</div>
-			<div class="col-md-4">
-				<h4 class="blue-text"></h4>
-				<img src="/img/package.png">
-			</div>
 		</div><hr>
 
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-10">
 				@if (count($user->orders) < 1)
-					<h3>You haven't sent a package yet!</h3>
-					<span><a class="btn btn-sm" href="{{{ action('HomeController@showPackages') }}}">Send a package today!</a></span>
+					<h3>Customer hasn't sent a package yet!</h3>
+					<span><a class="btn btn-sm" href="">Send Email</a></span>
 				@else
 					<h3 class="blue-text">Package History</h3>
 					<table class="table table-striped table-bordered">
@@ -80,5 +85,5 @@
 				</table>
 			</div>
 		</div>
-
+	</div>
 @stop

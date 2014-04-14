@@ -1,9 +1,49 @@
-/* CUSTOM CSS FOR LCP */
+/* CUSTOM CSS FOR LCP WEB APP*/
+
+@font-face
+{
+font-family: Roboto;
+src: url(/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+/* GLOBALS */
+
+body, html, #wrapper {
+	height: 100%;
+}
 
 body {
 	font-family: Helvetica, Arial, sans-serif;
 	color: #63666A;
 	min-height: 100%;
+}
+
+#wrapper {
+	overflow-y: auto;
+	padding-bottom: 20px;
+}
+
+h1, h2, h3, h4 {
+	font-family: Roboto, sans-serif;
+}
+
+.blue-text {
+	color: #73CFE8;
+}
+
+.status-icon {
+	font-size: 3em;
+	padding-top: 10px;
+}
+
+.btn {
+	background-color: #73CFE8;
+	color: #FFFFFF;
+}
+
+.btn-danger {
+	background-color: #FF0000;
+	color: #FFFFFF;	
 }
 
 /* INPUT ERROR MESSAGE */
@@ -16,13 +56,7 @@ body {
 	color: #FF0000;
 }
 
-h1, h2, h3, h4 {
-	font-family: 'Roboto', sans-serif;
-}
-
-.blue-text {
-	color: #73CFE8;
-}
+/* HEADER */
 
 header {
 	padding: 10px;
@@ -36,19 +70,7 @@ div.logo {
 	width: 300px;
 }
 
-.social {
-	font-size: 2em;
-}
-
-.btn {
-	background-color: #73CFE8;
-	color: #FFFFFF;
-}
-
-.btn-danger {
-	background-color: #FF0000;
-	color: #FFFFFF;	
-}
+/* MASTER NAV */
 
 .hlinks {
 	float: right;
@@ -68,10 +90,7 @@ div.logo {
 	color: #FFFFFF;
 }
 
-.main {
-	margin-bottom: 20px;
-	min-height: 400px;
-}
+/* HOME PAGE */
 
 #hero {
 	margin-top: 20px;
@@ -89,11 +108,158 @@ div.logo {
 	margin-bottom: 20px;
 }
 
+/* ADMIN MASTER */
+
+#wrapper-admin {
+	padding-left: 250px;
+ 	transition: all 0.4s ease 0s;
+}
+
+#logo-nav-admin {
+	width: 180px;
+}
+
+#wrapper-admin {
+  padding-left: 220px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -220px;
+  left: 220px;
+  width: 220px;
+  background: #f9f9f9;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  border-right: 1px solid #dae1e8;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  margin-left: 220px;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 220px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+  color: #73CFE8;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 80px;
+  margin-top: 20px;
+}
+
+.content-header {
+  height: 100px;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.inset {
+  padding: 20px;
+}
+
+@media (max-width:767px) {
+
+#wrapper-admin {
+  padding-left: 0;
+}
+
+#sidebar-wrapper {
+  left: 0;
+}
+
+#wrapper-admin.active {
+  position: relative;
+  left: 220px;
+}
+
+#wrapper.active #sidebar-wrapper {
+  left: 220px;
+  width: 220px;
+  transition: all 0.4s ease 0s;
+}
+
+#menu-toggle {
+  display: inline-block;
+}
+
+.inset {
+  padding: 15px;
+}
+
+}
+
+/* ADMIN DASHBOARD */
+
+.stat {
+	text-align: center;
+	border-bottom: 1px solid #73CFE8;
+}
+
+/* ADMIN ACTIONS */
+
+.admin-action {
+	list-style: none;
+	float: left;
+	margin-right: 15px;
+}
+
+.sort-orders.btn {
+	background-color: #f9f9f9;
+	color: #73CFE8;
+	border: 1px solid #73CFE8;
+}
+
+.status-icon-sm {
+	font-size: 2em;
+}
+
+.table-index {
+	text-align: center;
+}
+
+.table-index th {
+	text-align: center;
+}
+
+
+/* FOOTER */
 #footer {
-	height: 200px;
+	height: 180px;
 	width: 100%;
-	position: relative;
-	padding-top: 10px;
+	bottom: 0;
+	clear: both;
 	background-color: #73CFE8;
 }
 
@@ -106,5 +272,9 @@ div.logo {
 
 #footer ul li a {
 	color: #FFFFFF;
+	font-size: 2em;
+}
+
+.social {
 	font-size: 2em;
 }

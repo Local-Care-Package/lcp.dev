@@ -23,7 +23,8 @@ class HomeController extends BaseController {
 
 	public function showPackages()
 	{
-		return View::make('packages');
+		$packages = PackageType::all();
+		return View::make('packages')->with('packages', $packages);
 	}
 
 <<<<<<< HEAD
@@ -83,6 +84,31 @@ class HomeController extends BaseController {
 		return View::make('login');
 	}
 
+	public function showAdmin()
+	{
+		$orders = Order::all();
+		$newOrders = DB::table('orders')->whereNull('packaged_at')->get();
+		$inPackage = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNull('delivered_at')
+					->get();
+
+		$delivered = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNotNull('delivered_at')
+					->get();
+
+		$data = array(
+			'orders' => $orders,
+			'newOrders' => $newOrders,
+			'inPackage' => $inPackage,
+			'delivered' => $delivered,
+			'users' => $users = User::all()
+			);
+
+		return View::make('dashboard')->with($data);
+	}
+
 	public function doLogin()
 	{
 		$email = Input::get('email');
@@ -91,7 +117,7 @@ class HomeController extends BaseController {
 		{	    
 			Session::flash('successMessage', 'Login successful.');
 			if (Auth::user()->is_admin == true) {
-				return Redirect::action('UsersController@index');
+				return Redirect::action('HomeController@showAdmin');
 			} else {
 				return Redirect::intended('/');
 			}

@@ -15,7 +15,11 @@ class Order extends BaseModel {
 	 * Defines rules for orders table
 	 */
 	public static $rules = array(
-	    
+	    'recipient_name' => 'required',
+    	'street'  => 'required',
+    	'city' => 'required',
+    	'state' => 'required',
+    	'gift_message' => 'required'
 	);
 
 	/**

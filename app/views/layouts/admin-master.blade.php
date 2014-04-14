@@ -18,25 +18,23 @@
 
 </head>
 <body>
-<div id="wrapper">	
+<div id="wrapper-admin">	
 
 <!-- HEADER -->	
-	<header>
-		<div class="container">
+	<header id="header-admin">
+		<div class="">
 			<div class="row">
+				<div class="col-md-12">
+					@if (Session::has('successMessage'))
+			        <div class="alert alert-success session-error">{{{ Session::get('successMessage') }}}</div>
+			      	@endif
+			      	@if (Session::has('errorMessage'))
+			        <div class="alert alert-danger session-error">{{{ Session::get('errorMessage') }}}</div>
+			     	@endif
+			     </div>
 				<div class="col-md-7">
 					<div class="logo">
-						<a href="/"><img id="logo-nav" src="/img/lcp_logo_web.png"></a>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="hlinks">
-						<ul class="list-inline">
-							@if (Auth::check())
-							<li><em>Hello, {{{ Auth::user()->first_name }}}!</em></li>
-							<li><a href="{{{ action('HomeController@logout') }}}" role="button" class="btn btn-sm">Logout</a></li>
-							@endif
-						</ul>
+						<a href="{{{ action('HomeController@showAdmin') }}}"><img id="logo-nav" src="/img/lcp_logo_web.png"></a>
 					</div>
 				</div>
 			</div>
@@ -45,7 +43,7 @@
 <!-- END HEADER -->
 
 <!-- NAV -->
-	<div class="navbar navbar-default" role="navigation">
+	<div id="sidebar-nav" class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 	      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -57,11 +55,12 @@
 	    	</div>
 
 	    	<div class="collapse navbar-collapse">
-		    	<ul class="nav navbar-nav">
-		    		<li><a href="{{{ action('UsersController@index') }}}">Customers</a></li>
-			        <li><a href="{{{ action('OrdersController@index') }}}">Orders</a></li>
-			        <li><a href="">Inventory</a></li>
-			        <li><a href="">Vendors</a></li>
+		    	<ul id="dashboard-menu" class="nav navbar-nav">
+		    		<li><a href="{{{ action('UsersController@index') }}}"><i class="fa fa-users"></i> Customers</a></li>
+			        <li><a href="{{{ action('OrdersController@index') }}}"><i class="fa fa-gift"></i> Orders</a></li>
+			        <li><a href=""><i class="fa fa-archive"></i> Inventory</a></li>
+			        <li><a href=""><i class="fa fa-briefcase"></i> Vendors</a></li>
+			        <li><a href="{{{ action('HomeController@logout') }}}"><i class="fa fa-sign-out"></i> Logout</a></li>
 		    	</ul>
 		    </div>
 		</div>
@@ -70,23 +69,10 @@
 
 <!-- MAIN CONTENT -->
 	<div class="container main">
-		@if (Session::has('successMessage'))
-        <div class="alert alert-success session-error">{{{ Session::get('successMessage') }}}</div>
-      	@endif
-      	@if (Session::has('errorMessage'))
-        <div class="alert alert-danger session-error">{{{ Session::get('errorMessage') }}}</div>
-     	@endif
-
 		@yield('main-content')
 	</div>
 <!-- END MAIN -->
 </div>
-<!-- FOOTER -->
-	<div id="footer">
-      <div class="container">
-      </div>
-    </div>
-<!-- END FOOTER -->
 
 <!-- JS LIBRARY LOADS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

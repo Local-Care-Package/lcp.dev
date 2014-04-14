@@ -8,10 +8,9 @@
 	<title>Local Care Package</title>
 
 <!-- CSS LOADS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="shortcut icon" href="/img/favicon.ico">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link href="/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/lcp.css">
 
 @yield('topscript')
@@ -107,9 +106,9 @@
 <!-- END FOOTER -->
 
 <!-- JS LIBRARY LOADS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script src="https://js.stripe.com/v2/"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/stripe.js"></script>
 <script src="/js/bootbox.min.js"></script>
 
 

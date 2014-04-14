@@ -32,5 +32,10 @@
 			</td>
 		</tr>
 	</table>
+	@if (Auth::user()->is_admin)
+		<a class="btn btn-sm" href="{{{ action('OrdersController@index') }}}">Back to Order Index</a>
+	@else
+		<a class="btn btn-sm" href="">Back to Account Profile</a>
+	@endif
 
 @stop

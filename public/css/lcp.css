@@ -1,6 +1,15 @@
-/* CUSTOM CSS FOR LCP */
+/* CUSTOM CSS FOR LCP WEB APP*/
+
+@font-face
+{
+font-family: Roboto;
+src: url(/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+/* GLOBALS */
+
 body, html, #wrapper {
-	min-height: 100%;
+	height: 100%;
 }
 
 body {
@@ -9,38 +18,17 @@ body {
 	min-height: 100%;
 }
 
-/* INPUT ERROR MESSAGE */
-.help-block {
-	color: #FF0000;
-}
-
-/* ACCESS DENIED PAGE */
-.fa-ban {
-	color: #FF0000;
+#wrapper {
+	overflow-y: auto;
+	padding-bottom: 20px;
 }
 
 h1, h2, h3, h4 {
-	font-family: 'Roboto', sans-serif;
+	font-family: Roboto, sans-serif;
 }
 
 .blue-text {
 	color: #73CFE8;
-}
-
-header {
-	padding: 10px;
-}
-
-div.logo {
-	width: 300px;
-}
-
-#logo-nav {
-	width: 300px;
-}
-
-.social {
-	font-size: 2em;
 }
 
 .status-icon {
@@ -57,6 +45,32 @@ div.logo {
 	background-color: #FF0000;
 	color: #FFFFFF;	
 }
+
+/* INPUT ERROR MESSAGE */
+.help-block {
+	color: #FF0000;
+}
+
+/* ACCESS DENIED PAGE */
+.fa-ban {
+	color: #FF0000;
+}
+
+/* HEADER */
+
+header {
+	padding: 10px;
+}
+
+div.logo {
+	width: 300px;
+}
+
+#logo-nav {
+	width: 300px;
+}
+
+/* MASTER NAV */
 
 .hlinks {
 	float: right;
@@ -76,10 +90,7 @@ div.logo {
 	color: #FFFFFF;
 }
 
-.main {
-	margin-bottom: 20px;
-	min-height: 400px;
-}
+/* HOME PAGE */
 
 #hero {
 	margin-top: 20px;
@@ -97,17 +108,51 @@ div.logo {
 	margin-bottom: 20px;
 }
 
-#wrapper {
-	overflow: auto;
-	padding-bottom: 200px;
+/* ADMIN DASHBOARD */
+
+#wrapper-admin {
+	padding-bottom: 0em;
+	overflow-y: auto;
+	width: 100%;
+	min-height: 100%;
 }
 
+#header-admin {
+	background-color: #73CFE8;
+}
+
+#sidebar-nav {
+	width: 15em;
+	min-height: 100%;
+	overflow-y: auto;
+	float: left;
+	padding-bottom: 100%;
+	padding-top: 20px;
+	margin-bottom: 0em;
+	margin-right: 20px;
+	background-color: #73CFE8;
+}
+
+#dashboard-menu li {
+	list-style: none;
+	clear: left;
+	width: 180px;
+	border-bottom: 1px solid #dae1e8;
+}
+
+#dashboard-menu li>a {
+	color: #FFFFFF;
+}
+
+.status-icon-sm {
+	font-size: 2em;
+}
+
+/* FOOTER */
 #footer {
-	height: 200px;
+	height: 180px;
 	width: 100%;
-	position: relative;
-	padding-top: 10px;
-	margin-top: -200px;
+	bottom: 0;
 	clear: both;
 	background-color: #73CFE8;
 }
@@ -121,5 +166,9 @@ div.logo {
 
 #footer ul li a {
 	color: #FFFFFF;
+	font-size: 2em;
+}
+
+.social {
 	font-size: 2em;
 }

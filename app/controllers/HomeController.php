@@ -27,13 +27,6 @@ class HomeController extends BaseController {
 		return View::make('packages')->with('packages', $packages);
 	}
 
-<<<<<<< HEAD
-=======
-	public function showCart()
-	{
-		return View::make('cart');
-	}
-
 	public function showCheckout()
 	{
 		return View::make('checkout');
@@ -62,23 +55,11 @@ class HomeController extends BaseController {
 		}
 	} 
 
-
-	public function confirmation()
-	{
-		
-	}
-
 	public function showConfirmation()
 	{
 		return View::make('confirmation');
 	}
 
-	public function showAccount()
-	{
-		return View::make('account');
-	}
-
->>>>>>> ken
 	public function showLogin()
 	{
 		return View::make('login');
@@ -139,8 +120,6 @@ class HomeController extends BaseController {
 	{
 		return View::make('accessDenied');
 	}
-
-
 
 
 }

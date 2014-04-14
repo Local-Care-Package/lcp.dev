@@ -73,7 +73,7 @@
 							@if ($order->delivered_at != NULL && $order_packaged_at != NULL)
 							<td>Package Delivered At: {{ $order->delivered_at }} </td>
 							@endif
-							<td style="text-align: center"><a href="{{{ action('OrdersController@show', $user->id) }}}" class="btn btn-sm">See Details</a></td>
+							<td style="text-align: center"><a href="{{{ action('OrdersController@show', $order->id) }}}" class="btn btn-sm">See Details</a></td>
 						</tr>
 						@endforeach
 				@endif

@@ -33,7 +33,27 @@ class HomeController extends BaseController {
 
 	public function showAdmin()
 	{
-		return View::make('dashboard');
+		$orders = Order::all();
+		$newOrders = DB::table('orders')->whereNull('packaged_at')->get();
+		$inPackage = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNull('delivered_at')
+					->get();
+
+		$delivered = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNotNull('delivered_at')
+					->get();
+
+		$data = array(
+			'orders' => $orders,
+			'newOrders' => $newOrders,
+			'inPackage' => $inPackage,
+			'delivered' => $delivered,
+			'users' => $users = User::all()
+			);
+
+		return View::make('dashboard')->with($data);
 	}
 
 	public function doLogin()

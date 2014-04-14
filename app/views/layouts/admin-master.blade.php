@@ -18,61 +18,40 @@
 
 </head>
 <body>
-<div id="wrapper-admin">	
 
-<!-- HEADER -->	
-	<header id="header-admin">
-		<div class="">
-			<div class="row">
-				<div class="col-md-12">
-					@if (Session::has('successMessage'))
-			        <div class="alert alert-success session-error">{{{ Session::get('successMessage') }}}</div>
-			      	@endif
-			      	@if (Session::has('errorMessage'))
-			        <div class="alert alert-danger session-error">{{{ Session::get('errorMessage') }}}</div>
-			     	@endif
-			     </div>
-				<div class="col-md-7">
-					<div class="logo">
-						<a href="{{{ action('HomeController@showAdmin') }}}"><img id="logo-nav" src="/img/lcp_logo_web.png"></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-<!-- END HEADER -->
 
-<!-- NAV -->
-	<div id="sidebar-nav" class="navbar navbar-default" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-	      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-			       	<span class="sr-only">Toggle navigation</span>
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>
-			    </button>
-	    	</div>
+    <div id="wrapper">
 
-	    	<div class="collapse navbar-collapse">
-		    	<ul id="dashboard-menu" class="nav navbar-nav">
-		    		<li><a href="{{{ action('UsersController@index') }}}"><i class="fa fa-users"></i> Customers</a></li>
-			        <li><a href="{{{ action('OrdersController@index') }}}"><i class="fa fa-gift"></i> Orders</a></li>
-			        <li><a href=""><i class="fa fa-archive"></i> Inventory</a></li>
-			        <li><a href=""><i class="fa fa-briefcase"></i> Vendors</a></li>
-			        <li><a href="{{{ action('HomeController@logout') }}}"><i class="fa fa-sign-out"></i> Logout</a></li>
-		    	</ul>
-		    </div>
-		</div>
-	</div>
-<!-- END NAV -->
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="{{{ action('HomeController@showAdmin') }}}"><img id="logo-nav-admin" src="/img/lcp_logo_web.png"></a>
+                </li>
+                <li><a href="{{{ action('UsersController@index') }}}"><i class="fa fa-users"></i> Customers</a></li>
+                <li><a href="{{{ action('OrdersController@index') }}}"><i class="fa fa-gift"></i> Orders</a></li>
+                <li><a href=""><i class="fa fa-archive"></i> Inventory</a></li>
+                <li><a href=""><i class="fa fa-briefcase"></i> Vendors</a></li>
+                <li><a href=""><i class="fa fa-envelope"></i> Messages</a></li>
+                <li><a href="{{{ action('HomeController@logout') }}}"><i class="fa fa-sign-out"></i> Logout</a></li>
+            </ul>
+        </div>
 
-<!-- MAIN CONTENT -->
-	<div class="container main">
-		@yield('main-content')
-	</div>
-<!-- END MAIN -->
-</div>
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="content-header">
+				<a id="menu-toggle" class="btn btn-default"><i class="icon-reorder"></i></a>
+                    @yield('header')
+            </div>
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="container">
+	            <div class="page-content inset">
+	                @yield('main-content')
+	            </div>
+	        </div>
+        </div>
+
+    </div>
+
 
 <!-- JS LIBRARY LOADS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

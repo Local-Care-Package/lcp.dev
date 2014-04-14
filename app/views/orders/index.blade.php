@@ -1,14 +1,27 @@
 @extends('layouts.admin-master')
 
+@section('header')
+	<div class="row">
+		<div class="container">
+			<ul>
+				<h1>Order Index </h1><hr>
+				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">All Orders</a></li>
+				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">New Orders</a></li>
+				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">In Package Orders</a></li>
+				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">Delivered Orders</a></li>
+			</ul>
+		</div>
+	<div>
+@stop
+
 @section('main-content')
-	<h1>Orders Index</h1><hr>
 	<div class="row">
 		<div class="container">
 			<div class="col-md-10 col-sm-10">
-			<table class="table table-bordered table-striped table-responsive">
+			<table class="table table-bordered table-striped table-responsive table-index">
 				<tr>
 					<th>Order ID</th>
-					<th>Customer ID</th>
+					<th>Cust. ID</th>
 					<th>Placed On</th>
 					<th>Status</th>
 					<th></th>
@@ -19,7 +32,7 @@
 		    		<td>{{{ $order->id }}}</td>
 	    			<td>{{{ $order->user->id }}}</td>
 	    			<td>{{{ $order->created_at->format('l, F jS, Y') }}}</td>
-	    			<td style="text-align: center">
+	    			<td>
 						@if ($order->packaged_at == NULL && $order->delivered_at == NULL)
 						<i class="fa fa-tasks status-icon-sm blue-text"></i>
 						@endif

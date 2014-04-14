@@ -22,7 +22,8 @@ class HomeController extends BaseController {
 
 	public function showPackages()
 	{
-		return View::make('packages');
+		$packages = PackageType::all();
+		return View::make('packages')->with('packages', $packages);
 	}
 
 	public function showLogin()

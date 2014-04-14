@@ -65,3 +65,17 @@
 		</div>
 	</div>
 @stop
+
+@section('bottomscript')
+<script>
+  $('#btnDeleteUser').click(function(e) {
+    e.preventDefault();
+    bootbox.confirm('Are you sure you want to delete this account?', function(result) {
+      if (result) {
+        $('#formDeleteUser').submit();
+      }
+    });
+  });
+
+  </script>
+@stop

@@ -3,7 +3,11 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
+<<<<<<< HEAD
+    "hash": "6f0a416a7c0486d3025a9ebee2be9ee2",
+=======
     "hash": "74105d4b93f1b273b50130ef730f00aa",
+>>>>>>> bfdc599ab66ffaf658b62503b76905548b4c13b2
     "packages": [
         {
             "name": "classpreloader/classpreloader",

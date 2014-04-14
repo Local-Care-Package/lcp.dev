@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('main-content')
-<h1>Can't remember your password? <small>No problem! We'll help with that.</small></h1>
+<div class="container">
+<h1>Can't remember your password? <small>No problem! We'll help with that.</small></h1><hr>
 
 <form class="form-horizontal" action="{{ action('RemindersController@postRemind') }}" method="POST">
 	<div class="form-group">
@@ -19,4 +20,5 @@
     	</div>
     </div>
 </form>
+</div>
 @stop

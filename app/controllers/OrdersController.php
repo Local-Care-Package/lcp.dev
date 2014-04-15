@@ -63,7 +63,12 @@ class OrdersController extends \BaseController {
 	        return Redirect::back()->withInput()->withErrors($validator);
 
 	    } else {
-	    	$order->user_id = Auth::user()->id;
+	    	if (Auth::check()) {
+	    		$order->user_id = Auth::user()->id;
+	    	} else {
+	    		$order->user_id = 2;
+	    	}
+	    	
 	    	$order->recipient_name = Input::get('recipient_name');
 	    	$order->street = Input::get('street');
 	    	$order->city = Input::get('city');
@@ -72,7 +77,7 @@ class OrdersController extends \BaseController {
 	    	$order->gift_message = Input::get('gift_message');
 	    	$order->package_type_id = Input::get('package_type_id');
 	    	$order->save();
-			return View::make('orders.show')->with('order', $order);
+			return View::make('orders.confirm')->with('order', $order);
 		}
 	}
 

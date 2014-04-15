@@ -40,6 +40,7 @@
 		    	@endif
 		    	@endforeach
 			</table>
+			<tr>{{ $users->links(); }}</tr>
 			</div>
 		</div>
 	</div>

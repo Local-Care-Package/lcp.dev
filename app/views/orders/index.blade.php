@@ -5,10 +5,10 @@
 		<div class="container">
 			<ul>
 				<h1>Order Index </h1><hr>
-				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">All Orders</a></li>
-				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">New Orders</a></li>
-				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">In Package Orders</a></li>
-				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">Delivered Orders</a></li>
+				<li class="admin-action"><a id="allOrders" class="sort-orders btn btn-sm" href="?sort=all">All Orders</a></li>
+				<li class="admin-action"><a id="newOrders" class="sort-orders btn btn-sm" href="?sort=newOrders">New Orders</a></li>
+				<li class="admin-action"><a id="inPackage" class="sort-orders btn btn-sm" href="?sort=inPackage">In Package Orders</a></li>
+				<li class="admin-action"><a id="delivered" class="sort-orders btn btn-sm" href="?sort=delivered">Delivered Orders</a></li>
 			</ul>
 		</div>
 	<div>
@@ -27,20 +27,20 @@
 					<th></th>
 					<th></th>
 				</tr>
-		    	@foreach ($orders as $order)
+		    	</span>@foreach ($orders as $order)</span>
 		    	<tr>
 		    		<td>{{{ $order->id }}}</td>
 	    			<td>{{{ $order->user_id }}}</td>
-	    			<td>{{{ $order->created_at->format('l, F jS, Y') }}}</td>
+	    			<td>{{{ $order->created_at }}}</td>
 	    			<td>
 						@if ($order->packaged_at == NULL && $order->delivered_at == NULL)
 						<i class="fa fa-tasks status-icon-sm blue-text"></i>
 						@endif
 						@if ($order->packaged_at != NULL && $order->delivered_at == NULL)
-						<i class="fa fa-gift status-icon-sm blue-text"></i><br></span>
+						<i class="fa fa-gift status-icon-sm blue-text"></i>
 						@endif
 						@if ($order->packaged_at != NULL && $order->delivered_at != NULL)
-						<i class="fa fa-check status-icon-sm blue-text"></i></span>
+						<i class="fa fa-check status-icon-sm blue-text"></i>
 						@endif
 					</td>
 					<td style="text-align: center"><a href="{{{ action('OrdersController@show', $order->id) }}}" class="btn btn-sm">Details</a></td>
@@ -48,9 +48,12 @@
 		    	</tr>
 		    	@endforeach
 			</table>
-			<tr>{{ $orders->links(); }}</tr>
+			<p>{{ $orders->links(); }}</p>
 			</div>
 		</div>
 	</div>
+@stop
+
+@section('bottomscript')
 
 @stop

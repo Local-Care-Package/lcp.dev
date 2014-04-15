@@ -11,8 +11,22 @@ class OrdersController extends \BaseController {
 	{	
 
 		$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(20);
+		$newOrders = DB::table('orders')->whereNull('packaged_at')->get();
+		$inPackage = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNull('delivered_at')
+					->get();
+
+		$delivered = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNotNull('delivered_at')
+					->get();
+
 		$data = array(
-			'orders'   => $orders
+			'orders'   => $orders,
+			'newOrders' => $newOrders,
+			'inPackage' => $inPackage,
+			'delivered' => $delivered
 		);
 		// view all orders if ADMIN
 		return View::make('orders.index')->with($data);	;

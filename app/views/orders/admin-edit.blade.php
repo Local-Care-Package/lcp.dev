@@ -5,7 +5,7 @@
 		<div class="container">
 			<ul>
 				<h1>Order ID Number: {{{ $order->id }}}</h1>
-				<li class="admin-action"><a class="blue-text" href="{{{ action('OrdersController@show', $order->id) }}}"> Back to All Orders</a></li><hr>
+				<li class="admin-action"><a class="blue-text" href="{{{ action('OrdersController@show', $order->id) }}}"> Back to Order Details</a></li><hr>
 			</ul>
 		</div>
 	<div>

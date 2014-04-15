@@ -49,7 +49,7 @@
 					<span><a class="btn btn-sm" href="{{{ action('HomeController@showPackages') }}}">Send a package today!</a></span>
 				@else
 					<h3 class="blue-text">Package History</h3>
-					<table class="table table-striped table-bordered">
+					<table class="table table-striped table-bordered table-index">
 						<tr>
 							<th>Date</th>
 							<th>Order ID</th>
@@ -65,13 +65,13 @@
 							<td>{{ $order->packageType->description }}</td>
 							<td>${{ $order->packageType->price }}</td>
 							@if ($order->delivered_at == NULL && $order->packaged_at == NULL)
-								<td>Processing Order</td> 
+							<td><span class="blue-text"><i class="fa fa-tasks status-icon"></i><br>Procesing Order</span></td> 
 							@endif
 							@if ($order->delivered_at == NULL && $order->packaged_at != NULL)
-								<td>Ready for Delivery</td> 
+							<td><span class="blue-text"><i class="fa fa-truck status-icon"></i><br>Ready For Delivery!</span></td>
 							@endif
-							@if ($order->delivered_at != NULL && $order_packaged_at != NULL)
-							<td>Package Delivered At: {{ $order->delivered_at }} </td>
+							@if ($order->delivered_at != NULL && $order->packaged_at != NULL)
+							<td><span class="blue-text"><i class="fa fa-check status-icon"></i><br>Delivered!</span></td>
 							@endif
 							<td style="text-align: center"><a href="{{{ action('OrdersController@show', $order->id) }}}" class="btn btn-sm">See Details</a></td>
 						</tr>

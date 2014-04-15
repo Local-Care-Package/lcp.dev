@@ -33,6 +33,10 @@ Route::get('dashboard', 'HomeController@showAdmin');
 
 Route::get('accessDenied', 'HomeController@accessDenied');
 
+Route::get('dashboard/message', 'HomeController@message');
+
+Route::post('dashboard/message', 'HomeController@sendMessage');
+
 Route::resource('/account', 'UsersController');
 
 Route::resource('/orders', 'OrdersController');

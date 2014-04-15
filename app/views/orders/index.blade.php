@@ -5,10 +5,10 @@
 		<div class="container">
 			<ul>
 				<h1>Order Index </h1><hr>
-				<li class="admin-action"><a id="allOrders" class="sort-orders btn btn-sm" href="?sort=all">All Orders</a></li>
-				<li class="admin-action"><a id="newOrders" class="sort-orders btn btn-sm" href="?sort=newOrders">New Orders</a></li>
-				<li class="admin-action"><a id="inPackage" class="sort-orders btn btn-sm" href="?sort=inPackage">In Package Orders</a></li>
-				<li class="admin-action"><a id="delivered" class="sort-orders btn btn-sm" href="?sort=delivered">Delivered Orders</a></li>
+				<li class="admin-action"><a id="allOrders" class="sort-orders btn btn-sm" href="?show=all">All Orders</a></li>
+				<li class="admin-action"><a id="newOrders" class="sort-orders btn btn-sm" href="?show=newOrders">New Orders</a></li>
+				<li class="admin-action"><a id="inPackage" class="sort-orders btn btn-sm" href="?show=inPackage">In Package Orders</a></li>
+				<li class="admin-action"><a id="delivered" class="sort-orders btn btn-sm" href="?show=delivered">Delivered Orders</a></li>
 			</ul>
 		</div>
 	<div>

@@ -7,29 +7,32 @@ class OrdersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($show = null)
 	{	
-
-		$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(20);
-		$newOrders = DB::table('orders')->whereNull('packaged_at')->get();
-		$inPackage = DB::table('orders')
+		$show = Input::get('show');
+		switch ($show) {
+			case 'newOrders':
+				$orders = DB::table('orders')->whereNull('packaged_at')->paginate(20);
+				break;
+			case 'inPackage':
+				$orders = DB::table('orders')
 					->whereNotNull('packaged_at')
 					->whereNull('delivered_at')
-					->get();
-
-		$delivered = DB::table('orders')
+					->paginate(20);
+				break;
+			case 'delivered':
+				$orders = DB::table('orders')
 					->whereNotNull('packaged_at')
 					->whereNotNull('delivered_at')
-					->get();
+					->paginate(20);
+				break;
+			default:
+				$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(20);
+				break;
+		}
 
-		$data = array(
-			'orders'   => $orders,
-			'newOrders' => $newOrders,
-			'inPackage' => $inPackage,
-			'delivered' => $delivered
-		);
 		// view all orders if ADMIN
-		return View::make('orders.index')->with($data);	;
+		return View::make('orders.index')->with('orders', $orders);
 	}
 
 	/**

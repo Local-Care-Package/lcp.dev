@@ -31,7 +31,7 @@
                 <li><a href="{{{ action('OrdersController@index') }}}"><i class="fa fa-gift"></i> Orders</a></li>
                 <li><a href=""><i class="fa fa-archive"></i> Inventory</a></li>
                 <li><a href=""><i class="fa fa-briefcase"></i> Vendors</a></li>
-                <li><a href=""><i class="fa fa-envelope"></i> Messages</a></li>
+                <li><a href="{{{ action('HomeController@message') }}}"><i class="fa fa-envelope"></i> Messages</a></li>
                 <li><a href="{{{ action('HomeController@logout') }}}"><i class="fa fa-sign-out"></i> Logout</a></li>
             </ul>
         </div>

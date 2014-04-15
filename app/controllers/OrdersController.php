@@ -7,17 +7,32 @@ class OrdersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($show = null)
 	{	
+		$show = Input::get('show');
+		switch ($show) {
+			case 'newOrders':
+				$orders = DB::table('orders')->whereNull('packaged_at')->paginate(20);
+				break;
+			case 'inPackage':
+				$orders = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNull('delivered_at')
+					->paginate(20);
+				break;
+			case 'delivered':
+				$orders = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNotNull('delivered_at')
+					->paginate(20);
+				break;
+			default:
+				$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(20);
+				break;
+		}
 
-		$orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(20);
-		// $users = User::with('order');
-		$data = array(
-			// 'users' => $users,
-			'orders'   => $orders
-		);
 		// view all orders if ADMIN
-		return View::make('orders.index')->with($data);	;
+		return View::make('orders.index')->with('orders', $orders);
 	}
 
 	/**
@@ -104,7 +119,7 @@ class OrdersController extends \BaseController {
 	public function update($id)
 	{
 		// NOTE THIS REQUIRES A LOGGED IN USER TO CREATE CUSTOMER ID FOR ORDER
-		$data = INPUT::all();
+		$data = Input::all();
 		Log::info($data);
 
 		$order = Order::findOrFail($id);
@@ -117,7 +132,10 @@ class OrdersController extends \BaseController {
 	        return Redirect::back()->withInput()->withErrors($validator);
 
 	    } else {
+	    	$date = new DateTime;
+
 	    	$order->user_id = Input::get('user_id');
+	    	
 	    	$order->recipient_name = Input::get('recipient_name');
 	    	$order->street = Input::get('street');
 	    	$order->city = Input::get('city');
@@ -126,8 +144,12 @@ class OrdersController extends \BaseController {
 	    	$order->gift_message = Input::get('gift_message');
 	    	// These two fields are currently not working, as of now it reverts to null on submission
 	    	// See edit form for details
-	    	$order->packaged_at = Input::get('packaged_at');
-	    	$order->delivered_at = Input::get('delivered_at');
+	    	if (Input::get('packaged_at') == true) {
+	    		$order->packaged_at = $date;
+	    	}
+	    	if (Input::get('delivered_at') == true) {
+	    		$order->delivered_at = $date;
+	    	}
 	    	$order->save();
 		
 		}

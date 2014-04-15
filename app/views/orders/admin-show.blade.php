@@ -34,17 +34,18 @@
 						</td>
 						<td style="text-align: center">
 							@if ($order->packaged_at == NULL && $order->delivered_at == NULL)
-							<i class="fa fa-tasks status-icon blue-text"></i><br>Procesing Order</p>
+							<span class="blue-text"><i class="fa fa-tasks status-icon"></i><br>Procesing Order</span>
 							@endif
 							@if ($order->packaged_at != NULL && $order->delivered_at == NULL)
-							<i class="fa fa-truck status-icon blue-text"></i><br>Ready For Delivery!</span>
+							<span class="blue-text"><i class="fa fa-gift status-icon"></i><br>In Package!</span>
 							@endif
 							@if ($order->packaged_at != NULL && $order->delivered_at != NULL)
-							<i class="fa fa-gift status-icon blue-text"></i>Delivered!<br>{{ $order->delivered_at }}</span>
+							<span class="blue-text"><i class="fa fa-check status-icon"></i><br>Delivered!<br>{{ $order->delivered_at }}</span>
 							@endif
 						</td>
 					</tr>
 				</table>
+				<a href="{{{ action('OrdersController@edit', $order->id) }}}" class="btn">Edit Order</a>
 			</div>
 		</div>
 	</div>

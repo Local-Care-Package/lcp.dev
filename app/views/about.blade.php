@@ -33,3 +33,11 @@
 			</div>
 		<!-- END PARNTERS -->
 @stop
+
+@section('bottomscript')
+<script>
+  	$(document).ready(function() {
+    	$('.main').hide().fadeIn(1500);
+	});
+</script>
+@stop

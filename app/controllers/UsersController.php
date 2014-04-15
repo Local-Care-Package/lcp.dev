@@ -22,7 +22,17 @@ class UsersController extends \BaseController {
 	{
 		// Check if a user is an admin, if so, allow them to progress to index page
 		if(Auth::user()->is_admin) {
-			$users = User::paginate(20);
+			$search = Input::get('search');
+			if ($search != null) {		
+				$users = DB::table('users')
+								->where('first_name', 'LIKE', "%{$search}%")
+								->orWhere('last_name', 'LIKE', "%{$search}%")
+								->orWhere('id', "{$search}")
+								->orWhere('email', 'LIKE', "%{$search}%")
+								->paginate(20);
+			} else {
+				$users = User::paginate(20);
+			}		
 			return View::make('account.index')->with('users', $users);
 		} else {
 		// If a user is not the admin, push them to the show page for their own page

@@ -30,17 +30,17 @@
 		    	@foreach ($orders as $order)
 		    	<tr>
 		    		<td>{{{ $order->id }}}</td>
-	    			<td>{{{ $order->user->id }}}</td>
+	    			<td>{{{ $order->user_id }}}</td>
 	    			<td>{{{ $order->created_at->format('l, F jS, Y') }}}</td>
 	    			<td>
 						@if ($order->packaged_at == NULL && $order->delivered_at == NULL)
 						<i class="fa fa-tasks status-icon-sm blue-text"></i>
 						@endif
 						@if ($order->packaged_at != NULL && $order->delivered_at == NULL)
-						<i class="fa fa-truck status-icon-sm blue-text"></i><br>Ready For Delivery!</span>
+						<i class="fa fa-gift status-icon-sm blue-text"></i><br></span>
 						@endif
 						@if ($order->packaged_at != NULL && $order->delivered_at != NULL)
-						<i class="fa fa-gift status-icon-sm blue-text"></i>Delivered!<br>{{ $order->delivered_at }}</span>
+						<i class="fa fa-check status-icon-sm blue-text"></i></span>
 						@endif
 					</td>
 					<td style="text-align: center"><a href="{{{ action('OrdersController@show', $order->id) }}}" class="btn btn-sm">Details</a></td>

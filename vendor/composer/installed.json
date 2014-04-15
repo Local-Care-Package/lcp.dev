@@ -1663,6 +1663,8 @@
             "payment processing",
             "stripe"
         ]
+<<<<<<< HEAD
+=======
     },
     {
         "name": "fzaninotto/faker",
@@ -1711,5 +1713,6 @@
             "faker",
             "fixtures"
         ]
+>>>>>>> bef63f58efeb7a132e38c02c7d486b6ad3e6caa4
     }
 ]

@@ -108,45 +108,151 @@ div.logo {
 	margin-bottom: 20px;
 }
 
-/* ADMIN DASHBOARD */
+/* ADMIN MASTER */
 
 #wrapper-admin {
-	padding-bottom: 0em;
-	overflow-y: auto;
-	width: 100%;
-	min-height: 100%;
+	padding-left: 250px;
+ 	transition: all 0.4s ease 0s;
 }
 
-/*#header-admin {
-	background-color: #73CFE8;
-}*/
-
-#sidebar-nav {
-	width: 15em;
-	min-height: 100%;
-	overflow-y: auto;
-	float: left;
-	padding-bottom: 100%;
-	padding-top: 20px;
-	margin-bottom: 0em;
-	margin-right: 20px;
-	background-color: #73CFE8;
-}
-
-#dashboard-menu li {
-	list-style: none;
-	clear: left;
+#logo-nav-admin {
 	width: 180px;
-	border-bottom: 1px solid #dae1e8;
 }
 
-#dashboard-menu li>a {
-	color: #FFFFFF;
+#wrapper-admin {
+  padding-left: 220px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -220px;
+  left: 220px;
+  width: 220px;
+  background: #f9f9f9;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  border-right: 1px solid #dae1e8;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  margin-left: 220px;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 220px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+  color: #73CFE8;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 80px;
+  margin-top: 20px;
+}
+
+.content-header {
+  height: 100px;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.inset {
+  padding: 20px;
+}
+
+@media (max-width:767px) {
+
+#wrapper-admin {
+  padding-left: 0;
+}
+
+#sidebar-wrapper {
+  left: 0;
+}
+
+#wrapper-admin.active {
+  position: relative;
+  left: 220px;
+}
+
+#wrapper.active #sidebar-wrapper {
+  left: 220px;
+  width: 220px;
+  transition: all 0.4s ease 0s;
+}
+
+#menu-toggle {
+  display: inline-block;
+}
+
+.inset {
+  padding: 15px;
+}
+
+}
+
+/* ADMIN DASHBOARD */
+
+.stat {
+	text-align: center;
+	border-bottom: 1px solid #73CFE8;
+}
+
+/* ADMIN ACTIONS */
+
+.admin-action {
+	list-style: none;
+	float: left;
+	margin-right: 15px;
+}
+
+.sort-orders.btn {
+	background-color: #f9f9f9;
+	color: #73CFE8;
+	border: 1px solid #73CFE8;
 }
 
 .status-icon-sm {
 	font-size: 2em;
 }
+
+.table-index {
+	text-align: center;
+}
+
+.table-index th {
+	text-align: center;
+}
+
 
 /* FOOTER */
 #footer {

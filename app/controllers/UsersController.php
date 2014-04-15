@@ -22,11 +22,8 @@ class UsersController extends \BaseController {
 	{
 		// Check if a user is an admin, if so, allow them to progress to index page
 		if(Auth::user()->is_admin) {
-			// $users = User::all()->with('orders')->orderBy('created_at', 'desc')->paginate(10);
-			// $data = array(
-			// 	'users'=>$users
-			// );
-			return View::make('account.index');
+			$users = User::all();
+			return View::make('account.index')->with('users', $users);
 		} else {
 		// If a user is not the admin, push them to the show page for their own page
 			return Redirect::action('HomeController@accessDenied');
@@ -90,7 +87,11 @@ class UsersController extends \BaseController {
 		$orders = $user->orders;
 		$data = array('user' => $user, 'orders' => $orders);
 
-		return View::make('account.show')->with($data);
+		if (Auth::user()->is_admin) {
+			return View::make('account.admin-show')->with($data);
+		} else {
+			return View::make('account.show')->with($data);
+		}
 	}
 
 	/**
@@ -102,7 +103,12 @@ class UsersController extends \BaseController {
 	public function edit($id)
 	{
 		$user = User::findOrFail($id);
-		return View::make('account.edit')->with('user', $user);
+
+		if (Auth::user()->is_admin) {
+			return View::make('account.admin-edit')->with('user', $user);
+		} else {
+			return View::make('account.edit')->with('user', $user);
+		}
 	}
 
 	/**
@@ -131,8 +137,13 @@ class UsersController extends \BaseController {
 			$user->phone = Input::get('phone');
 			$user->save();
 
-			Session::flash('successMessage', 'Your information has successfully been updated!');
-			return Redirect::action('UsersController@show', $user->id);
+			if (Auth::user()->is_admin) {
+				return Redirect::action('UsersController@index');
+			} else {
+				Session::flash('successMessage', 'Your information has successfully been updated!');
+				return Redirect::action('UsersController@show', $user->id);
+			}
+			
 		}
 	}
 
@@ -153,7 +164,11 @@ class UsersController extends \BaseController {
 			Session::flash('errorMessage', 'Account delete was unsuccessful.');
 		} else {
 			Session::flash('successMessage', 'Your account was deleted successfully');
-			return Redirect::action('HomeController@showAbout');
+			if (Auth::user()->is_admin) {
+				return Redirect::action('UsersController@index');
+			} else {
+				return Redirect::action('HomeController@showAbout');
+			}
 		}
 	}
 

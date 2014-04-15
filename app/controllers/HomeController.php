@@ -1,5 +1,6 @@
 <?php
 
+
 class HomeController extends BaseController {
 
 	/*
@@ -26,6 +27,39 @@ class HomeController extends BaseController {
 		return View::make('packages')->with('packages', $packages);
 	}
 
+	public function showCheckout()
+	{
+		return View::make('checkout');
+	}
+
+	public function buyCheckout()
+	{
+
+		Stripe::setApiKey("sk_test_tmZKPpxGIafBRaS640pw8WXC");
+
+		// Get the credit card details submitted by the form
+		$token = $_POST['stripeToken'];
+
+		// Create the charge on Stripe's servers - this will charge the user's card
+		try {
+		$charge = Stripe_Charge::create(array(
+		  "amount" => 2500, // amount in cents, again
+		  "currency" => "usd",
+		  "card" => $token,
+		  "description" => "payinguser@example.com")
+		);
+		return Redirect::action('HomeController@showConfirmation');
+
+		} catch(Stripe_CardError $e) {
+
+		}
+	} 
+
+	public function showConfirmation()
+	{
+		return View::make('confirmation');
+	}
+
 	public function showLogin()
 	{
 		return View::make('login');
@@ -33,7 +67,27 @@ class HomeController extends BaseController {
 
 	public function showAdmin()
 	{
-		return View::make('dashboard');
+		$orders = Order::all();
+		$newOrders = DB::table('orders')->whereNull('packaged_at')->get();
+		$inPackage = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNull('delivered_at')
+					->get();
+
+		$delivered = DB::table('orders')
+					->whereNotNull('packaged_at')
+					->whereNotNull('delivered_at')
+					->get();
+
+		$data = array(
+			'orders' => $orders,
+			'newOrders' => $newOrders,
+			'inPackage' => $inPackage,
+			'delivered' => $delivered,
+			'users' => $users = User::all()
+			);
+
+		return View::make('dashboard')->with($data);
 	}
 
 	public function doLogin()
@@ -66,5 +120,6 @@ class HomeController extends BaseController {
 	{
 		return View::make('accessDenied');
 	}
+
 
 }

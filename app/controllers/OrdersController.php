@@ -71,7 +71,12 @@ class OrdersController extends \BaseController {
 	{
 		// show order/package details (for order history, confirm email)
 		$order = Order::findOrFail($id);
-		return View::make('orders.show')->with('order', $order);
+
+		if (Auth::user()->is_admin) {
+			return View::make('orders.admin-show')->with('order', $order);
+		} else {
+			return View::make('orders.show')->with('order', $order);
+		}
 	}
 
 	/**
@@ -85,7 +90,8 @@ class OrdersController extends \BaseController {
 		$order = Order::findOrFail($id);
 		$packageType = $order->packageType;
 		$data = array('order' => $order, 'packageType' => $packageType);
-		return View::make('orders.edit')->with($data);
+
+		return View::make('orders.admin-edit')->with($data);
 		// edit order history (ADMIN FUNCITON ONLY)
 	}
 
@@ -138,7 +144,11 @@ class OrdersController extends \BaseController {
 	public function destroy($id)
 	{
 		// delete item from cart/order
-		return Redirect::action('OrdersController@index');
+		if (Auth::user()->is_admin) {
+			return Redirect::action('OrdersController@index');
+		} else {
+			return Redirect::action('HomeController@showPackages');
+		}
 	}
 
 }

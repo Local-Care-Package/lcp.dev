@@ -29,6 +29,10 @@ Route::post('login', 'HomeController@doLogin');
 
 Route::get('logout', 'HomeController@logout');
 
+Route::get('dashboard/inventory', 'HomeController@showInventory');
+
+Route::get('dashboard/vendors', 'HomeController@showVendors');
+
 Route::get('dashboard', 'HomeController@showAdmin');
 
 Route::get('accessDenied', 'HomeController@accessDenied');

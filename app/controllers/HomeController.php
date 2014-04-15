@@ -139,5 +139,15 @@ class HomeController extends BaseController {
 		return View::make('accessDenied');
 	}
 
+	public function showInventory()
+	{
+		return View::make('inventory');
+	}
+
+	public function showVendors()
+	{
+		return View::make('vendors');
+	}
+
 
 }

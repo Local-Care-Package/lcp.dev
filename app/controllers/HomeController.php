@@ -50,9 +50,9 @@ class HomeController extends BaseController {
 		return View::make('checkout');
 	}
 
-	public function buyCheckout()
+	public function buyCheckout($id)
 	{
-
+		$order = Order::findOrFail($id);
 		Stripe::setApiKey("sk_test_tmZKPpxGIafBRaS640pw8WXC");
 
 		// Get the credit card details submitted by the form
@@ -61,12 +61,12 @@ class HomeController extends BaseController {
 		// Create the charge on Stripe's servers - this will charge the user's card
 		try {
 		$charge = Stripe_Charge::create(array(
-		  "amount" => 2500, // amount in cents, again
+		  "amount" => ($order->packageType->price * 100), // amount in cents, again
 		  "currency" => "usd",
 		  "card" => $token,
 		  "description" => "payinguser@example.com")
 		);
-		return Redirect::action('HomeController@showConfirmation');
+		return Redirect::action('HomeController@showOrder');
 
 		} catch(Stripe_CardError $e) {
 

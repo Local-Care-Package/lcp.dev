@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('main-content')
-	<h1>Edit Order</h1><hr>
+	<h1>New Order</h1><hr>
 	{{ Form::open(array('action' => 'OrdersController@store', 'class' => 'form-horizontal')) }}
 	<div class="form-group">
 		{{ Form::label('recipient_name', 'Recipient Name', array('class' => 'col-sm-3 control-label')) }}
@@ -42,11 +42,10 @@
 	<div class="form-group">
 		{{ Form::label('packageType', 'Package Type', array('class' => 'col-sm-3 control-label')) }}
 		<div class="col-sm-9">
-			{{ Form::select('package_type_id', ['1'=>'Package Type 1','2'=>'Package Type 2','3'=>'Package Type 3'], array('class' => 'form-control', 'required'=>'required')) }}
+			{{ Form::select('package_type_id', ['1'=>'Package Type 1' ,'2'=>'Package Type 2','3'=>'Package Type 3'], array('class' => 'form-control', 'required'=>'required')) }}
 		</div>
 	</div>
 	{{ Form::submit('Submit') }}
 	{{ Form::close() }}
-
 
 @stop

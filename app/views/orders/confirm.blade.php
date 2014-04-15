@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('main-content')
-	<h1>Order Details:</h1><hr>
+	<h1>Confirm Details:</h1><hr>
 	<table class="table table-bordered">
 		<tr>
 			<th><h4>Recipient Information</h4></th>
@@ -16,6 +16,7 @@
 			</td>
 			<td>
 				{{ $order->packageType->description }}<br><hr>
+				{{ $order->packageType->price}}
 				<strong>Personal Message</strong><br>
 				{{ $order->gift_message }}
 			</td>
@@ -32,11 +33,25 @@
 			</td>
 		</tr>
 	</table>
-	@if (Auth::check())
-		@if (Auth::user()->is_admin)
-			<a class="btn btn-sm" href="{{{ action('OrdersController@index') }}}">Back to Order Index</a>
-		@else
-			<a class="btn btn-sm" href="{{{ action('UsersController@show', $order->user_id) }}}">Back to Account Profile</a>
-		@endif
-	@endif
+
+<form action="{{{homeController@buyCheckout}}}" method="POST">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_VlCCHDzP5R9iEC4JrMy9lQnc"
+    data-amount=" {{ $order->packageType->price * 100 }} "
+    data-name="Local Care Package"
+    data-description="{{ $order->packageType->description }}"
+    data-image="img/lcp_background.jpg">
+  </script>
+</form>
+
+
+
+ <script type="text/javascript">
+  // This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_VlCCHDzP5R9iEC4JrMy9lQnc');
+  // ...
+ </script>
+
 @stop

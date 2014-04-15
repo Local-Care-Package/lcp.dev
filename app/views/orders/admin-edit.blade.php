@@ -97,6 +97,7 @@
 				@endif
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-6">
+					<a href="{{{ action('OrdersController@show', $order->id) }}}" class="btn btn-sm">Back to Order Details</a>
 					{{ Form::submit('Submit', array('class' => 'btn btn-sm')) }}
 					</div>
 				</div>

@@ -5,7 +5,7 @@
 		<div class="container">
 			<ul>
 				<h1>{{{ $user->first_name }}} {{{ $user->last_name }}}</h1>
-				<li class="admin-action"><a class="blue-text" href="{{{ action('UsersController@index') }}}"> Back to All Customers</a></li><hr>
+				<li class="admin-action"><a class="blue-text" href="{{{ action('UsersController@show', $user->id) }}}"> Back to Customer Details</a></li><hr>
 			</ul>
 		</div>
 	<div>
@@ -46,7 +46,7 @@
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-9">
 								{{ Form::submit('Update Account', array('class' => 'btn btn-sm'))}}
-								<span><a class="btn btn-sm btn-danger" id="btnDeleteUser" href="{{{ action('UsersController@destroy', $user->id) }}}">Delete Account</a></span>
+								<a class="btn btn-sm btn-danger" id="btnDeleteUser" href="{{{ action('UsersController@destroy', $user->id) }}}">Delete Account</a>
 							</div>
 						</div>
 

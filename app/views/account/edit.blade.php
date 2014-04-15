@@ -38,6 +38,7 @@
 					<div class="col-sm-offset-3 col-sm-9">
 						{{ Form::submit('Update Account', array('class' => 'btn btn-sm'))}}
 						<span><a class="btn btn-sm btn-danger" id="btnDeleteUser" href="{{{ action('UsersController@destroy', $user->id) }}}">Delete Account</a></span>
+						<span><a class="btn btn-sm" href="{{{ action('UsersController@show', $user->id) }}}">Back to My Account</a></span>
 					</div>
 				</div>
 

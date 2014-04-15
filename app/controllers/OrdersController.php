@@ -37,9 +37,6 @@ class OrdersController extends \BaseController {
 	 */
 	public function store()
 	{
-		// NOTE THIS REQUIRES A LOGGED IN USER TO CREATE CUSTOMER ID FOR ORDER
-		$data = INPUT::all();
-		Log::info($data);
 
 		$order = new Order;
 		$validator = Validator::make(Input::all(), Order::$rules);
@@ -100,6 +97,10 @@ class OrdersController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		// NOTE THIS REQUIRES A LOGGED IN USER TO CREATE CUSTOMER ID FOR ORDER
+		$data = INPUT::all();
+		Log::info($data);
+
 		$order = Order::findOrFail($id);
 		$validator = Validator::make(Input::all(), Order::$rules);
 	  
@@ -110,6 +111,7 @@ class OrdersController extends \BaseController {
 	        return Redirect::back()->withInput()->withErrors($validator);
 
 	    } else {
+	    	$order->user_id = Input::get('user_id');
 	    	$order->recipient_name = Input::get('recipient_name');
 	    	$order->street = Input::get('street');
 	    	$order->city = Input::get('city');

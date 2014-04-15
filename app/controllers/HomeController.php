@@ -21,6 +21,24 @@ class HomeController extends BaseController {
 		return View::make('about');
 	}
 
+	public function message()
+	{
+		return View::make('message');
+	}
+
+	public function sendMessage()
+	{
+		if (!empty($_POST['phone'])) {
+			$phone=$_POST['phone'];
+			$message=$_POST['message'];
+			Twilio::message($phone, $message);
+			Session::flash('phone', $phone);
+			Session::flash('message', $message);
+		}
+		return View::make('message');
+	}
+	
+
 	public function showPackages()
 	{
 		$packages = PackageType::all();
@@ -119,6 +137,16 @@ class HomeController extends BaseController {
 	public function accessDenied()
 	{
 		return View::make('accessDenied');
+	}
+
+	public function showInventory()
+	{
+		return View::make('inventory');
+	}
+
+	public function showVendors()
+	{
+		return View::make('vendors');
 	}
 
 

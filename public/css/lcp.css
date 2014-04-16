@@ -107,6 +107,31 @@ div.logo {
 	width: 700px;
 }
 
+.sub-text {
+	padding: 20px;
+	display: none;
+}
+
+.opacity {
+	opacity: 0.6;
+	color: #000000;
+}
+
+#sub-message1 {
+	height: 300px;
+	background-image: url('/img/sub-message1.jpg');
+}
+
+#sub-message2 {
+	height: 300px;
+	background-image: url('/img/sub-message2.jpg');
+}
+
+#sub-message3 {
+	height: 300px;
+	background-image: url('/img/sub-message3.jpeg');
+}
+
 #marketing-points {
 	margin-top: 20px;
 	margin-bottom: 20px;

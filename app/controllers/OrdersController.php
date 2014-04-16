@@ -2,6 +2,16 @@
 
 class OrdersController extends \BaseController {
 
+	public function __construct()
+	{
+		// Include parent constructor
+		parent::__construct();
+
+		// Run an authentication filter before all methods except create and store
+		$this->beforeFilter('auth', array('except' => array('create', 'store', 'confirm')));
+
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -36,7 +46,7 @@ class OrdersController extends \BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Show the form for creating a new order.
 	 *
 	 * @return Response
 	 */
@@ -46,14 +56,63 @@ class OrdersController extends \BaseController {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Store the result of a stripe processing, and create a new order if successful
+	 *
+	 * @return Response
+	 */
+	public function makePayment()
+	{
+		{
+			
+			Stripe::setApiKey("sk_test_tmZKPpxGIafBRaS640pw8WXC");
+
+			// Get the credit card details submitted by the form
+			$token = Input::get('stripeToken');
+
+			// Create the charge on Stripe's servers - this will charge the user's card
+			try {
+			$charge = Stripe_Charge::create(array(
+			  "amount" => (Session::get('package_type_price') * 100), // amount in cents, again
+			  "currency" => "usd",
+			  "card" => $token,
+			  "description" => Session::get('package_type_description'))
+			);
+
+			} catch(Stripe_CardError $e) {
+				dd($e);
+			}
+			$order = new Order();
+			
+			if (auth::check()) {
+				$order->user_id = Auth::user()->id;
+				// Next steps: Grab customer token from stripe, for reuse.
+			} else {
+				// Else put to guest id
+				$order->user_id = 2;
+			}
+			$order->recipient_name = (Session::get('recipient_name'));
+	    	$order->street = (Session::get('street'));
+	    	$order->city = (Session::get('city'));
+	    	$order->state = (Session::get('state'));
+	    	$order->zip = (Session::get('zip'));
+	    	$order->gift_message = (Session::get('gift_message'));
+	    	$order->package_type_id = (Session::get('package_type_id'));
+	    	$order->stripe_transaction_token = $charge->id;
+	    	$order->save();
+
+	    	Session::flash('successMessage', 'Your purchase was successful!');
+			return Redirect::action('OrdersController@show', $order->id);
+		} 
+	}
+
+	/**
+	 * Store a newly created order in a session.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
 
-		$order = new Order;
 		$validator = Validator::make(Input::all(), Order::$rules);
 	  
 	    // attempt validation
@@ -63,16 +122,18 @@ class OrdersController extends \BaseController {
 	        return Redirect::back()->withInput()->withErrors($validator);
 
 	    } else {
-	    	$order->user_id = Auth::user()->id;
-	    	$order->recipient_name = Input::get('recipient_name');
-	    	$order->street = Input::get('street');
-	    	$order->city = Input::get('city');
-	    	$order->state = Input::get('state');
-	    	$order->zip = Input::get('zip');
-	    	$order->gift_message = Input::get('gift_message');
-	    	$order->package_type_id = Input::get('package_type_id');
-	    	$order->save();
-			return View::make('orders.show')->with('order', $order);
+	    	$packageType = PackageType::findOrFail(Input::get('package_type_id'));
+
+	    	Session::put('recipient_name', Input::get('recipient_name'));
+	    	Session::put('street', Input::get('street'));
+	    	Session::put('city', Input::get('city'));
+	    	Session::put('state', Input::get('state'));
+	    	Session::put('zip', Input::get('zip'));
+	    	Session::put('gift_message', Input::get('gift_message'));
+	    	Session::put('package_type_id', Input::get('package_type_id'));
+	    	Session::put('package_type_description', $packageType->description);
+	    	Session::put('package_type_price', $packageType->price);
+			return View::make('orders.confirm');
 		}
 	}
 

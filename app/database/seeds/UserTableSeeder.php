@@ -15,6 +15,17 @@ class UserTableSeeder extends DatabaseSeeder
         $admin->is_admin = true;
         $admin->save();
 
+        $admin = new User;
+        $admin->id = 2;
+        $admin->email = 'guest@lcp.com';
+        $admin->password = "password";
+        $admin->first_name = "Guest User";
+        $admin->last_name = "Guest User";
+        $admin->phone = "210-457-1232";
+        $admin->stripe_customer_token = "8675309";
+        $admin->is_admin = false;
+        $admin->save();
+
         $faker = $this->getFaker();
         for ($i = 0; $i < 10; $i++)
         {

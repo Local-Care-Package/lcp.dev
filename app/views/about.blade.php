@@ -2,10 +2,11 @@
 
 @section('main-content')
 		<!-- HERO IMAGE -->
+	<div class="hideMain">
 		<div id="hero">
 			<div id="hero-message">
-				<h1>Local Care Package</h1>
-				<p>Blah blah blah blah</p>
+				<h1>The best of local brought to you</h1>
+				<p>Local Care Package is a curated gift service featuring high quality products from local San Antonio businesses, aiming to connect residents to their community and support local business. Know someone who needs some local love?</p>
 				<span><a role="button" class="btn btn-sm" href="{{{ action('HomeController@showPackages') }}}">Send a package</a></button>
 			</div>
 		</div>
@@ -32,12 +33,13 @@
 			<div id="partners" class="row">
 			</div>
 		<!-- END PARNTERS -->
+	</div>
 @stop
 
 @section('bottomscript')
 <script>
   	$(document).ready(function() {
-    	$('.main').hide().fadeIn(1500);
+    	$('.hideMain').fadeIn(1500);
 	});
 </script>
 @stop

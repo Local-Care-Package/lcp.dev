@@ -6,9 +6,12 @@
 
 			<ul>
 				<h1>Customer Index</h1><hr>
-				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">All Customers</a></li>
-				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">Sort by Packages</a></li>
-				<li class="admin-action"><a class="sort-orders btn btn-sm" href="">Deleted Accounts</a></li>
+				<li class="admin-action"><a class="sort-orders btn btn-sm" href="?show=all">All Customers</a></li>
+				{{ Form::open(array('action' => array('UsersController@index'), 'method' => 'GET', 'class' => 'form-inline')) }}
+                <label for="search">Search: </label>
+                {{ Form::text('search', null, array('class' => 'form-control input-sm'))}}      
+                {{ Form::submit('Go', array('class' => 'btn btn-sm'))}}
+                {{ Form::close() }}
 			</ul>
 		</div>
 	<div>
@@ -23,7 +26,6 @@
 					<th>ID</th>
 					<th>Name</th>
 					<th>Member Since</th>
-					<th>Packages</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -32,8 +34,7 @@
 		    	<tr>
 		    		<td>{{{ $user->id }}}</td>
 	    			<td>{{{ $user->last_name }}}, {{{ $user->first_name }}}</td>
-	    			<td>{{{ $user->created_at->format('l, F jS, Y') }}}</td>
-	    			<td>{{{ count($user->orders()) }}}</td>
+	    			<td>{{{ $user->created_at }}}</td>
 					<td style="text-align: center"><a href="{{{ action('UsersController@show', $user->id) }}}" class="btn btn-sm">Details</a></td>
 					<td style="text-align: center"><a href="{{{ action('UsersController@edit', $user->id) }}}"><i class="fa fa-pencil-square-o blue-text status-icon-sm"></i></a></td>	
 		    	</tr>

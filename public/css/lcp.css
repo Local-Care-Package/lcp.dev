@@ -18,6 +18,10 @@ body {
 	min-height: 100%;
 }
 
+.hideMain {
+	display: none;
+}
+
 #wrapper {
 	overflow-y: auto;
 	padding-bottom: 20px;
@@ -100,6 +104,7 @@ div.logo {
 
 #hero-message {
 	padding: 50px;
+	width: 700px;
 }
 
 #marketing-points {

@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('main-content')
+	<div class="hideMain">	
 		<!-- HERO IMAGE -->
 		<div id="hero">
 			<div id="hero-message">
@@ -51,12 +52,13 @@
 				<span><a role="button" class="btn btn-sm" href="">Send Package</a></span>
 			</div>
 		</div>
+	</div>
 @stop
 
 @section('bottomscript')
 <script>
   	$(document).ready(function() {
-    	$('.main').hide().fadeIn(1500);
+    	$('.hideMain').fadeIn(1500);
 	});
 </script>
 @stop

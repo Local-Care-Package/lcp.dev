@@ -14,17 +14,29 @@
 
 		<!-- MARKETING POINTS -->
 		<div id="marketing-points" class="row">
-			<div class="col-md-4">
-				<h2>Point 1</h2>
-				<p>Pinterest umami Tonx ethnic. Blue Bottle Brooklyn Odd Future, wolf 90's cray iPhone blog organic mixtape. VHS Helvetica squid scenester locavore fixie, biodiesel yr food truck pickled semiotics.</p>
+			<div class="col-md-4 sub-message">
+				<div id="sub-message1">
+					<div class="sub-text" id="sub-text1">
+						<h2>Point 1</h2>
+						<p>Pinterest umami Tonx ethnic. Blue Bottle Brooklyn Odd Future, wolf 90's cray iPhone blog organic mixtape. VHS Helvetica squid scenester locavore fixie, biodiesel yr food truck pickled semiotics.</p>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<h2>Point 2</h2>
-				<p>Irony mustache lo-fi polaroid, meh church-key bitters Etsy meggings tousled Banksy. Hoodie single-origin coffee hella meggings. </p>
+			<div class="col-md-4 sub-message">
+				<div id="sub-message2">
+					<div class="sub-text" id="sub-text2">
+						<h2>Point 2</h2>
+						<p>Irony mustache lo-fi polaroid, meh church-key bitters Etsy meggings tousled Banksy. Hoodie single-origin coffee hella meggings. </p>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<h2>Point 3</h2>
-				<p>Pour-over meggings bitters church-key iPhone chambray squid distillery post-ironic salvia, disrupt small batch kale chips viral Brooklyn. Tousled food truck Thundercats actually seitan.</p>
+			<div class="col-md-4 sub-message">
+				<div id="sub-message3">
+					<div class="sub-text" id="sub-text3">
+						<h2>Point 3</h2>
+						<p>Pour-over meggings bitters church-key iPhone chambray squid distillery post-ironic salvia, disrupt small batch kale chips viral Brooklyn. Tousled food truck Thundercats actually seitan.</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- END MARKETING POINTS -->
@@ -41,5 +53,36 @@
   	$(document).ready(function() {
     	$('.hideMain').fadeIn(1500);
 	});
+
+	$('#sub-message1').mouseover(function() {
+		$('#sub-message1').addClass('opacity');
+		$('#sub-text1').fadeIn();
+	});
+
+	$('#sub-message1').mouseleave(function() {
+		$('#sub-message1').removeClass('opacity');
+		$('#sub-text1').fadeOut(1500);
+	});
+
+	$('#sub-message2').mouseover(function() {
+		$('#sub-message2').addClass('opacity');
+		$('#sub-text2').fadeIn();
+	});
+
+	$('#sub-message2').mouseleave(function() {
+		$('#sub-message2').removeClass('opacity');
+		$('#sub-text2').fadeOut(1500);	
+	});
+
+	$('#sub-message3').mouseover(function() {
+		$('#sub-message3').addClass('opacity');
+		$('#sub-text3').fadeIn();
+	});
+
+	$('#sub-message3').mouseleave(function() {
+		$('#sub-message3').removeClass('opacity');
+		$('#sub-text3').fadeOut(1500);	
+	})
+
 </script>
 @stop

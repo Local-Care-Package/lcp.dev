@@ -40,12 +40,20 @@
 		</div>
 	</div>
 	<div class="form-group">
-		{{ Form::label('packageType', 'Package Type', array('class' => 'col-sm-3 control-label')) }}
-		<div class="col-sm-9">
-			{{ Form::select('package_type_id', ['1'=>'Package Type 1' ,'2'=>'Package Type 2','3'=>'Package Type 3'], array('class' => 'form-control', 'required'=>'required')) }}
+		<div class="col-sm-offset-3 col-sm-9">
+			{{ Form::label('package_type_id', 'Standard Package – $25.00') }}
+				{{ Form::radio('package_type_id', '1', array('class' => 'form-control', 'required'=>'required')) }}<br>
+			{{ Form::label('package_type_id', 'Premium Package - $45.00') }}
+				{{ Form::radio('package_type_id', '2', array('class' => 'form-control', 'required'=>'required')) }}<br>
+			{{ Form::label('package_type_id', 'Grand Package – $65.00') }}
+				{{ Form::radio('package_type_id', '3', array('class' => 'form-control', 'required'=>'required')) }}<br>
 		</div>
 	</div>
-	{{ Form::submit('Submit') }}
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			{{ Form::submit('Place Order', array('class' => 'btn btn-sm')) }}
+		</div>
+	</div>
 	{{ Form::close() }}
 
 @stop

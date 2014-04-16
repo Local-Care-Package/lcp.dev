@@ -31,7 +31,7 @@
 		    	<tr>
 		    		<td>{{{ $order->id }}}</td>
 	    			<td>{{{ $order->user_id }}}</td>
-	    			<td>{{{ $order->created_at->format('l, F jS, Y') }}}</td>
+	    			<td>{{{ $order->created_at }}}</td>
 	    			<td>
 						@if ($order->packaged_at == NULL && $order->delivered_at == NULL)
 						<i class="fa fa-tasks status-icon-sm blue-text"></i>

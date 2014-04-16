@@ -34,7 +34,7 @@
 		    	<tr>
 		    		<td>{{{ $user->id }}}</td>
 	    			<td>{{{ $user->last_name }}}, {{{ $user->first_name }}}</td>
-	    			<td>{{{ $user->created_at->format('l, F jS, Y') }}}</td>
+	    			<td>{{{ $user->created_at }}}</td>
 					<td style="text-align: center"><a href="{{{ action('UsersController@show', $user->id) }}}" class="btn btn-sm">Details</a></td>
 					<td style="text-align: center"><a href="{{{ action('UsersController@edit', $user->id) }}}"><i class="fa fa-pencil-square-o blue-text status-icon-sm"></i></a></td>	
 		    	</tr>

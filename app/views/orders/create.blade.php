@@ -34,7 +34,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		{{ Form::label('gift_message', 'Gift Mesage', array('class' => 'col-sm-3 control-label')) }}
+		{{ Form::label('gift_message', 'Gift Message', array('class' => 'col-sm-3 control-label')) }}
 		<div class="col-sm-9">
 			{{ Form::text('gift_message', null, array('class' => 'form-control', 'required'=>'required')) }}
 		</div>

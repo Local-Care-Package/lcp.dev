@@ -260,7 +260,7 @@ div.logo {
 
 /* FOOTER */
 #footer {
-	height: 180px;
+	min-height: 180px;
 	width: 100%;
 	bottom: 0;
 	clear: both;

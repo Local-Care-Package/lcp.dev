@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 class OrdersController extends \BaseController {
 
 	public function __construct()
@@ -193,9 +195,6 @@ class OrdersController extends \BaseController {
 	        return Redirect::back()->withInput()->withErrors($validator);
 
 	    } else {
-	    	$date = new DateTime;
-
-	    	$order->user_id = Input::get('user_id');
 	    	
 	    	$order->recipient_name = Input::get('recipient_name');
 	    	$order->street = Input::get('street');
@@ -206,10 +205,10 @@ class OrdersController extends \BaseController {
 	    	// These two fields are currently not working, as of now it reverts to null on submission
 	    	// See edit form for details
 	    	if (Input::get('packaged_at') == true) {
-	    		$order->packaged_at = $date;
+	    		$order->packaged_at = Carbon::now();
 	    	}
 	    	if (Input::get('delivered_at') == true) {
-	    		$order->delivered_at = $date;
+	    		$order->delivered_at = Carbon::now();
 	    	}
 	    	$order->save();
 		

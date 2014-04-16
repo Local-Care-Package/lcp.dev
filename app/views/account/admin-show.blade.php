@@ -73,9 +73,9 @@
 							<td><span class="blue-text"><i class="fa fa-tasks status-icon"></i><br>Procesing Order</span></td>
 							@endif
 							@if ($order->delivered_at == NULL && $order->packaged_at != NULL)
-							<td><span class="blue-text"><i class="fa fa-truck status-icon"></i><br>Ready For Delivery!</span></td> 
+							<td><span class="blue-text"><i class="fa fa-gift status-icon"></i><br>In Package!</span></td> 
 							@endif
-							@if ($order->delivered_at != NULL && $order_packaged_at != NULL)
+							@if ($order->delivered_at != NULL && $order->packaged_at != NULL)
 							<td><span class="blue-text"><i class="fa fa-check status-icon"></i><br>Delivered!<br>{{ $order->delivered_at }}</span></td>
 							@endif
 							<td style="text-align: center"><a href="{{{ action('OrdersController@show', $order->id) }}}" class="btn btn-sm">See Details</a></td>

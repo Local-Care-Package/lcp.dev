@@ -25,6 +25,7 @@ class UsersController extends \BaseController {
 			$search = Input::get('search');
 			if ($search != null) {		
 				$users = DB::table('users')
+								->whereNull('deleted_at')
 								->where('first_name', 'LIKE', "%{$search}%")
 								->orWhere('last_name', 'LIKE', "%{$search}%")
 								->orWhere('id', "{$search}")

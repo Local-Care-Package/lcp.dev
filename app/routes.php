@@ -41,6 +41,8 @@ Route::get('dashboard/message', 'HomeController@message');
 
 Route::post('dashboard/message', 'HomeController@sendMessage');
 
+Route::post('orders/makePayment', 'OrdersController@makePayment');
+
 Route::resource('/account', 'UsersController');
 
 Route::resource('/orders', 'OrdersController');

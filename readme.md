@@ -1,5 +1,3 @@
-#TEST
-
 # Local Care Package Web App
 
 The Local Care Package Web application, is intended to be a customer marketplace where customers can purchase and send care packages to specified recipients.

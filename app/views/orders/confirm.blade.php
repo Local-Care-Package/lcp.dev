@@ -6,52 +6,33 @@
 		<tr>
 			<th><h4>Recipient Information</h4></th>
 			<th><h4>Package Contents</h4></th>
-			<th><h4>Package Status</h4></th>
+			<th><h4>Total Cost</h4></th>
 		</tr>
 		<tr>
 			<td>
-				{{ $order->recipient_name }}<br>
-				{{ $order->street }}<br>
-				{{ $order->city }}, {{ $order->state }} {{ $order->zip }}<br>
+				{{ Session::get('recipient_name') }}<br>
+				{{ Session::get('street') }}<br>
+				{{ Session::get('city') }}, {{ Session::get('state') }} {{ Session::get('zip') }}<br>
 			</td>
 			<td>
-				{{ $order->packageType->description }}<br><hr>
-				{{ $order->packageType->price}}
+				{{ Session::get('package_type_description') }}<br><hr>
 				<strong>Personal Message</strong><br>
-				{{ $order->gift_message }}
+				{{ Session::get('gift_message') }}
 			</td>
-			<td style="text-align: center">
-				@if ($order->packaged_at == NULL && $order->delivered_at == NULL)
-				<span class="blue-text"><i class="fa fa-tasks status-icon"></i><br>Procesing Order</span>
-				@endif
-				@if ($order->packaged_at != NULL && $order->delivered_at == NULL)
-				<span class="blue-text"><i class="fa fa-truck status-icon"></i><br>Ready For Delivery!</span>
-				@endif
-				@if ($order->packaged_at != NULL && $order->delivered_at != NULL)
-				<span class="blue-text"><i class="fa fa-check status-icon"></i><br>Delivered!<br>{{ $order->delivered_at }}</span>
-				@endif
+			<td style="text-align: left">
+				{{ Session::get('package_type_price') }}
 			</td>
 		</tr>
 	</table>
 
-<form action="{{{homeController@buyCheckout}}}" method="POST">
-<input type="hidden" name="_token" value="{{ csrf_token() }}">
+{{ Form::open(array('action' => 'OrdersController@makePayment', 'method'=>'post'))}}
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_VlCCHDzP5R9iEC4JrMy9lQnc"
-    data-amount=" {{ $order->packageType->price * 100 }} "
+    data-amount="{{ Session::get('package_type_price') * 100}}"
     data-name="Local Care Package"
-    data-description="{{ $order->packageType->description }}"
-    data-image="img/lcp_background.jpg">
+    data-description="{{ Session::get('package_type_description') }}"
+    data-image="/img/lcp_background.jpg">
   </script>
-</form>
-
-
-
- <script type="text/javascript">
-  // This identifies your website in the createToken call below
-  Stripe.setPublishableKey('pk_test_VlCCHDzP5R9iEC4JrMy9lQnc');
-  // ...
- </script>
-
+{{ Form::close()}}
 @stop

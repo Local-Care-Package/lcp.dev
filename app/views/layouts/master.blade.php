@@ -63,6 +63,7 @@
 		    		<li><a href="{{{ action('HomeController@showAbout') }}}">About</a></li>
 			        <li><a href="{{{ action('HomeController@showPackages') }}}">Packages</a></li>
 			        <li><a href="@if (Auth::check()) {{{ action('UsersController@show', Auth::user()->id) }}} @else {{{ action('HomeController@showLogin') }}} @endif">My Account</a></li>
+		    		<li><a href="{{{ action('HomeController@showTeam') }}}">Our Team</a></li>
 		    	</ul>
 		    </div>
 		</div>

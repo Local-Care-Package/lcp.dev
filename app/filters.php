@@ -53,6 +53,15 @@ Route::filter('users.protect', function()
 	}
 });
 
+Route::filter('orders.protect', function()
+{
+	$id = Request::segment(2);
+	$order = Order::find($id);
+	if (Auth::user()->id != $order->user->id && Auth::user()->is_admin != true) {
+		return Redirect::action('HomeController@accessDenied');
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

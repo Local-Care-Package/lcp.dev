@@ -4,7 +4,7 @@ class PackageTypeTableSeeder extends DatabaseSeeder
 {
     public function run()
     {
-
+          // Create the three basic package types to be seeded in the database
           $packageType1 = new PackageType;
           $packageType1->description = 'Standard Package';
           $packageType1->price = 25.00;

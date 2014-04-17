@@ -4,30 +4,21 @@ class UserTableSeeder extends DatabaseSeeder
 {
     public function run()
     {
+        // Create admin@lcp-app.com user
         $admin = new User;
         $admin->id = 1;
-        $admin->email = 'admin@lcp.com';
+        $admin->email = 'admin@lcp-app.com';
         $admin->password = "password";
         $admin->first_name = "Local Care Package";
         $admin->last_name = "Administrative User";
         $admin->phone = "210-457-1232";
-        $admin->stripe_customer_token = "4242424242424242424";
+        $admin->stripe_customer_token = "ADMIN NO CUSTOMER TOKEN";
         $admin->is_admin = true;
         $admin->save();
 
-        $admin = new User;
-        $admin->id = 2;
-        $admin->email = 'guest@lcp.com';
-        $admin->password = "password";
-        $admin->first_name = "Guest User";
-        $admin->last_name = "Guest User";
-        $admin->phone = "210-457-1232";
-        $admin->stripe_customer_token = "8675309";
-        $admin->is_admin = false;
-        $admin->save();
-
+        // Create 50 fake customers
         $faker = $this->getFaker();
-        for ($i = 0; $i < 10; $i++)
+        for ($i = 0; $i < 50; $i++)
         {
           $user = User::create(array(
             'email' => $faker->email,

@@ -21,6 +21,11 @@ class HomeController extends BaseController {
 		return View::make('about');
 	}
 
+	public function showTeam()
+	{
+		return View::make('team');
+	}
+
 	public function message()
 	{
 		return View::make('message');

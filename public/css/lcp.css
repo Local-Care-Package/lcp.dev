@@ -99,22 +99,21 @@ div.logo {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	height: 400px;
+	background-position: -84em;
 	background-image: url('/img/lcp_background.jpg');
 }
 
 #hero-message {
 	padding: 50px;
-	width: 700px;
+	width: 45em;
 }
 
 .sub-text {
 	padding: 20px;
 	display: none;
-}
-
-.opacity {
-	opacity: 0.4;
-	color: #000000;
+	background-color: #FFFFFF;
+	height: 300px;
+	opacity: 0.8;
 }
 
 #sub-message1 {
@@ -130,6 +129,22 @@ div.logo {
 #sub-message3 {
 	height: 300px;
 	background-image: url('/img/sub-message3.jpeg');
+}
+
+#sub-message4 {
+	height: 300px;
+	background-image: url('/img/sub-message4.jpg');
+}
+
+#sub-message5 {
+	height: 300px;
+	background-image: url('/img/sub-message5.jpg');
+}
+
+#sub-message6 {
+	height: 300px;
+	background-position: -10em;
+	background-image: url('/img/sub-message6.jpg');
 }
 
 #marketing-points {

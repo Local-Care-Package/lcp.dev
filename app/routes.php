@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@showAbout');
 
 Route::get('shop-packages', 'HomeController@showPackages');
 
+Route::get('team', 'HomeController@showTeam');
+
 Route::get('checkout', 'HomeController@showCheckout');
 
 Route::post('checkout', 'HomeController@buyCheckout');

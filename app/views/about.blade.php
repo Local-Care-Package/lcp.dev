@@ -61,7 +61,7 @@
 
 	$('#sub-message1').mouseleave(function() {
 		$('#sub-message1').removeClass('opacity');
-		$('#sub-text1').fadeOut(1500);
+		$('#sub-text1').fadeOut();
 	});
 
 	$('#sub-message2').mouseover(function() {
@@ -71,7 +71,7 @@
 
 	$('#sub-message2').mouseleave(function() {
 		$('#sub-message2').removeClass('opacity');
-		$('#sub-text2').fadeOut(1500);	
+		$('#sub-text2').fadeOut();	
 	});
 
 	$('#sub-message3').mouseover(function() {
@@ -81,7 +81,7 @@
 
 	$('#sub-message3').mouseleave(function() {
 		$('#sub-message3').removeClass('opacity');
-		$('#sub-text3').fadeOut(1500);	
+		$('#sub-text3').fadeOut();	
 	})
 
 </script>

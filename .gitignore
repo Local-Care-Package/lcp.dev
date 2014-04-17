@@ -10,3 +10,5 @@ Thumbs.db
 app/config/database.php
 
 app/views/.DS_Store
+
+app/config/database.php

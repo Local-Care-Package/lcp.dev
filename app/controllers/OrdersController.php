@@ -12,6 +12,8 @@ class OrdersController extends \BaseController {
 		// Run an authentication filter before all methods except create and store
 		$this->beforeFilter('auth', array('except' => array('create', 'store', 'confirm')));
 
+		$this->beforeFilter('orders.protect', array('only' => array('show')));
+
 	}
 
 	/**
@@ -54,7 +56,14 @@ class OrdersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('orders.create');
+		// Make sure user is logged in or registers to place order
+		if (Auth::check()) {
+			return View::make('orders.create');	
+		} else {
+			Session::flash('errorMessage', 'Please login or register to place an order.');
+			return View::make('login');
+		}
+		
 	}
 
 	/**

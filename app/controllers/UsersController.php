@@ -36,14 +36,14 @@ class UsersController extends \BaseController {
 			}		
 			return View::make('account.index')->with('users', $users);
 		} else {
-		// If a user is not the admin, push them to the show page for their own page
+		// If a user is not the admin, redirect them to access denied page.
 			return Redirect::action('HomeController@accessDenied');
 		}
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 *
+	 * Redirect new customer to the register view so they can create new account
 	 * @return Response
 	 */
 	public function create()
@@ -76,6 +76,8 @@ class UsersController extends \BaseController {
 			$user->password = Input::get('password');
 			$user->is_admin = false;
 			$user->save();
+
+			// Send Thank You Email to new user.
 
 			Mail::send('emails.auth.userconfirm', array('first_name'=>Input::get('first_name')), function($message){
         	$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to Local Care Package!');

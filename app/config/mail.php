@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'info@localcarepackage.com', 'name' => 'Local Care Package'),
+	'from' => array('address' => $_ENV['EMAIL_ADDR'], 'name' => $_ENV['EMAIL_NAME']),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'info@localcarepackage.com',
+	'username' => $_ENV['EMAIL_ADDR'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'localcarepackage',
+	'password' => $_ENV['EMAIL_PASS'],
 
 	/*
 	|--------------------------------------------------------------------------

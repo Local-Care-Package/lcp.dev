@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('main-content')
-	<div class="hideMain">	
+	<div class="hideMain">
 		<!-- HERO IMAGE -->
 		<div id="hero" class="col-md-12">
 			<div id="hero-message" class="img-responsive">
@@ -25,7 +25,7 @@
 				<div id="sub-message5">
 					<div class="sub-text" id="sub-text5">
 						<h2>Personality</h2>
-						<p>Our packages bring to light local San Antonio personality by highlighting the gems that make our city special.</p>
+						<p>Our packages are full of local San Antonio personality, highlighting the gems that make our city special.</p>
 					</div>
 				</div>
 			</div>
@@ -41,9 +41,11 @@
 		<!-- END MARKETING POINTS -->
 
 		<!-- PACKAGES -->
-		<div id="packages" class="row">
+		<div class="row package-info">
 			<div class="col-md-4">
-				<img src="/img/package2.jpg">
+				<img src="/img/package.png" class="package-img img-responsive" alt="package">
+			</div>
+			<div class="col-md-4 package-text">	
 				<h3>{{{ $packages[0]->description }}} – ${{{ $packages[0]->price }}}</h3>
 					<ul>
 						<li>6 Bakery Lorraine Macarons</li>
@@ -51,10 +53,16 @@
 						<li>Coffee for two at Local Coffee</li>
 						<li>One-hour bike ride for two with Bcycle</li>
 					</ul>
-				<span><a role="button" class="btn btn-sm" href="{{{ action('OrdersController@create') }}}">Send Package</a></span>
 			</div>
 			<div class="col-md-4">
-				<img src="/img/package2.jpg">
+				<span><a role="button" class="btn btn-lg send-package-btn" href="{{{ action('OrdersController@create') }}}"><i class="fa fa-gift status-icon"></i><br>Send Package!</a></span>
+			</div>
+		</div>
+		<div class="row package-info">
+			<div class="col-md-4">
+				<img src="/img/package.png" class="package-img img-responsive" alt="package">
+			</div>
+			<div class="col-md-4 package-text">	
 				<h3>{{{ $packages[1]->description }}} – ${{{ $packages[1]->price }}}</h3>
 					<ul>
 						<li>6 Bakery Lorraine Macarons</li>
@@ -64,10 +72,16 @@
 						<li>Coffee for two at Local Coffee</li>
 						<li>One-hour bike ride for two with Bcycle</li>
 					</ul>
-				<span><a role="button" class="btn btn-sm" href="{{{ action('OrdersController@create') }}}">Send Package</a></span>
 			</div>
 			<div class="col-md-4">
-				<img src="/img/package2.jpg">
+				<span><a role="button" class="btn btn-lg send-package-btn" href="{{{ action('OrdersController@create') }}}"><i class="fa fa-gift status-icon"></i><br>Send Package!</a></span>
+			</div>
+		</div>
+		<div class="row package-info">
+			<div class="col-md-4">
+				<img src="/img/package.png" class="package-img img-responsive" alt="package">
+			</div>
+			<div class="col-md-4 package-text">
 				<h3>{{{ $packages[2]->description }}} – ${{{ $packages[2]->price }}}</h3>
 					<ul>
 						<li>6 Bakery Lorraine Macarons</li>
@@ -77,9 +91,11 @@
 						<li>Dinner for two at The Monterey</li>
 						<li>Coffee for two at Local Coffee</li>
 						<li>One-hour bike ride for two with Bcycle</li>
-						<li>One-day admission for the San Antonio Museum of Art</li>
+						<li>One-day admission at the McNay Museum of Art</li>
 					</ul>
-				<span><a role="button" class="btn btn-sm" href="{{{ action('OrdersController@create') }}}">Send Package</a></span>
+			</div>
+			<div class="col-md-4">
+				<span><a role="button" class="btn btn-lg send-package-btn" href="{{{ action('OrdersController@create') }}}"><i class="fa fa-gift status-icon"></i><br>Send Package!</a></span>
 			</div>
 		</div>
 		<!-- END PACKAGES -->

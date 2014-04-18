@@ -48,13 +48,21 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
-	if (Config::get('app.debug') === true)
-	{
-		Log::error($exception);
-	}
-	else
-	{
-		Log::error($exception->getMessage());
+	if (isset($exception,$code)) {
+		if ( is_object($exception) ) {
+			if (Config::get('app.debug') === true)
+			{
+				Log::error($exception);
+			}
+			else
+			{
+				Log::error($exception->getMessage());
+				return Response::view('errors.500', array(), 500);
+			}
+		} else {
+			return Response::view('errors.500', array(), 500);
+		}
+	} else {
 		return Response::view('errors.500', array(), 500);
 	}
 });

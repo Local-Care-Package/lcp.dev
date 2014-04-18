@@ -15,7 +15,7 @@
 
 			<p>
 				To view your account profile use the link below to visit our site and login!
- 				<a href="http://lcp.dev/login">Take me to my account login</a>
+ 				<a href="http://lcp-app.com/login">Take me to my account login</a>
  			</p>
 		</div>
 	</body>

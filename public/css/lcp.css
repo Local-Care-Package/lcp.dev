@@ -311,6 +311,19 @@ div.logo {
 .stat {
 	text-align: center;
 	border-bottom: 1px solid #73CFE8;
+	margin-bottom: 60px;
+}
+
+.fa-cogs {
+	color: #FFD900;
+}
+
+.centered {
+	text-align: center;
+}
+
+.centered li {
+	list-style: none;
 }
 
 /* ADMIN ACTIONS */

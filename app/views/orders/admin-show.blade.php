@@ -40,7 +40,7 @@
 							<span class="blue-text"><i class="fa fa-gift status-icon"></i><br>In Package!</span>
 							@endif
 							@if ($order->packaged_at != NULL && $order->delivered_at != NULL)
-							<span class="blue-text"><i class="fa fa-check status-icon"></i><br>Delivered!<br>{{ $order->delivered_at }}</span>
+							<span class="blue-text"><i class="fa fa-check status-icon"></i><br>Delivered!</span>
 							@endif
 						</td>
 					</tr>

@@ -49,6 +49,14 @@ h1, h2, h3, h4 {
 	color: #FFFFFF;	
 }
 
+.navbar-default .navbar-nav li a:hover {
+	color: #63666A;
+}
+
+.btn:hover {
+	color: #63666A;
+}
+
 /* INPUT ERROR MESSAGE */
 .help-block {
 	color: #FF0000;
@@ -173,6 +181,12 @@ div.logo {
 	margin-top: 4em;
 	margin-bottom: 2em;
 }
+
+.send-package-btn:hover {
+	color: #FFFFFF;
+	font-style: italic;
+}
+
 /* TEAM PAGE */
 
 .team-pics {

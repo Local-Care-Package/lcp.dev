@@ -48,22 +48,6 @@ The Local Care Package Web application, is intended to be a customer marketplace
 
 + Planned Administrative Functionality
   * Integration of automated messaging to customers at specific stages of order status (email/SMS)
-  * Admin Dashboard - PUll DETAILS FROM PAGE
-  * Inventory Dashboard - PULL DETAILS FROM PAGE
-  * Vendor Dashboard - PULL DETAILS FROM PAGE
-
-
-##To Do:
-
-- Clean up orders/create view i.e. Radio buttons for packages rather than dropdown
-- Integrate twillio view into connecting with specific orders (4.0)
-- Customer stripe token not currently in use  (4.0)
-- Inconsitency for status icons (Completed)
-- Add confirmation email for Order(Completed)
-- Send email when it is delivered(Completed)
-- Domain for hosting  (Completed)
-- Send packages buttons redirect to Orders/Create(Completed)
-- Filter orders to require user signed in(Completed)
-- Orders Filter for all functionality so you can't view other orders that you done' own (seen user)(Completed)
-- Dummy data for intent of dashboard(Completed)
-
+  * Admin Dashboard - See app.views.dashboard.blade.php for details
+  * Inventory Dashboard - See app.views.inventory.blade.php for details
+  * Vendor Dashboard - See app.views.vendors.blade.php for details

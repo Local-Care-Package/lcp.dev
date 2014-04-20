@@ -75,31 +75,31 @@ class OrdersController extends \BaseController {
 	{
 		{
 			
-			Stripe::setApiKey("sk_test_tmZKPpxGIafBRaS640pw8WXC");
+			// Stripe::setApiKey("sk_test_tmZKPpxGIafBRaS640pw8WXC");
 
-			// Get the credit card details submitted by the form
-			$token = Input::get('stripeToken');
+			// // Get the credit card details submitted by the form
+			// $token = Input::get('stripeToken');
 
-			// Create the charge on Stripe's servers - this will charge the user's card
-			try {
-			$charge = Stripe_Charge::create(array(
-			  "amount" => (Session::get('package_type_price') * 100), // amount in cents, again
-			  "currency" => "usd",
-			  "card" => $token,
-			  "description" => Session::get('package_type_description'))
-			);
+			// // Create the charge on Stripe's servers - this will charge the user's card
+			// try {
+			// $charge = Stripe_Charge::create(array(
+			//   "amount" => (Session::get('package_type_price') * 100), // amount in cents, again
+			//   "currency" => "usd",
+			//   "card" => $token,
+			//   "description" => Session::get('package_type_description'))
+			// );
 
-			} catch(Stripe_CardError $e) {
-				dd($e);
-			}
+			// } catch(Stripe_CardError $e) {
+			// 	dd($e);
+			// }
 			$order = new Order();
 			
 			if (auth::check()) {
 				$order->user_id = Auth::user()->id;
 				// Next steps: Grab customer token from stripe, for reuse.
 			} else {
-				// Else put to guest id
-				$order->user_id = 2;
+				// Else put to admin id
+				$order->user_id = 1;
 			}
 			$order->recipient_name = (Session::get('recipient_name'));
 	    	$order->street = (Session::get('street'));
@@ -108,7 +108,7 @@ class OrdersController extends \BaseController {
 	    	$order->zip = (Session::get('zip'));
 	    	$order->gift_message = (Session::get('gift_message'));
 	    	$order->package_type_id = (Session::get('package_type_id'));
-	    	$order->stripe_transaction_token = $charge->id;
+	    	// $order->stripe_transaction_token = $charge->id;
 	    	$order->save();
 
 	    	Session::flash('successMessage', 'Your purchase was successful!');

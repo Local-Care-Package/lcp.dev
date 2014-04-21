@@ -23,6 +23,7 @@ class OrdersController extends \BaseController {
 	 */
 	public function index($show = null)
 	{	
+
 		$show = Input::get('show');
 		switch ($show) {
 			case 'newOrders':
@@ -46,7 +47,12 @@ class OrdersController extends \BaseController {
 		}
 
 		// view all orders if ADMIN
-		return View::make('orders.index')->with('orders', $orders);
+		if (Auth::user()->is_admin) {
+			return View::make('orders.index')->with('orders', $orders);
+		} else {
+			return View::make('accessDenied');
+		}
+		
 	}
 
 	/**
@@ -178,8 +184,12 @@ class OrdersController extends \BaseController {
 		$packageType = $order->packageType;
 		$data = array('order' => $order, 'packageType' => $packageType);
 
-		return View::make('orders.admin-edit')->with($data);
-		// edit order history (ADMIN FUNCITON ONLY)
+		//show edit order ONLY if admin
+		if (Auth::user()->is_admin) {
+			return View::make('orders.admin-edit')->with($data);
+		} else {
+			return View::make('accessDenied');
+		}
 	}
 
 	/**

@@ -26,7 +26,7 @@
 	</table>
 
 <!-- Disabled for web-demo -->
-<!-- {{ Form::open(array('action' => 'OrdersController@makePayment', 'method'=>'post'))}}
+{{ Form::open(array('action' => 'OrdersController@makePayment', 'method'=>'post'))}}
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_VlCCHDzP5R9iEC4JrMy9lQnc"
@@ -35,23 +35,23 @@
     data-description="{{ Session::get('package_type_description') }}"
     data-image="/img/lcp_background.jpg">
   </script>
-{{ Form::close()}} -->
-
-{{ Form::open(array('action' => 'OrdersController@makePayment', 'method'=>'post', 'id' => 'formConfirmAndPay'))}}
-{{ Form::Submit('Confirm and Pay', array('class'=> 'btn', 'id' => 'btnConfirmPurchase'))}}
 {{ Form::close()}}
+
+<!-- {{ Form::open(array('action' => 'OrdersController@makePayment', 'method'=>'post', 'id' => 'formConfirmAndPay'))}}
+{{ Form::Submit('Confirm and Pay', array('class'=> 'btn', 'id' => 'btnConfirmPurchase'))}}
+{{ Form::close()}} -->
 @stop
 
 @section('bottomscript')
 <script>
-  $('#btnConfirmPurchase').click(function(e) {
-    e.preventDefault();
-    bootbox.confirm('This application is a web demo intended to showcase the development capabilities of our team.  To protect both our users and ourselves, We have decided to disable the credit card payment functionality to prevent undue credit card transactions, as we do not actively sell or deliver care packages.  If you would like to see full credit card functionality via the Stripe API, please contact one of our team members directly.', function(result) {
-      if (result) {
-        $('#formConfirmAndPay').submit();
-      }
-    });
-  });
+  // $('#btnConfirmPurchase').click(function(e) {
+  //   e.preventDefault();
+  //   bootbox.confirm('This application is a web demo intended to showcase the development capabilities of our team.  To protect both our users and ourselves, We have decided to disable the credit card payment functionality to prevent undue credit card transactions, as we do not actively sell or deliver care packages.  If you would like to see full credit card functionality via the Stripe API, please contact one of our team members directly.', function(result) {
+  //     if (result) {
+  //       $('#formConfirmAndPay').submit();
+  //     }
+  //   });
+  // });
 
   </script>
 @stop

@@ -24,6 +24,7 @@
 			</td>
 		</tr>
 	</table>
+	<h5 class="blue-text">* FOR BETA TESTING PURPOSES, PLEASE USE CARD NUMBER <strong>4242 4242 4242 4242</strong> FOR TESTING CREDIT CARD/STRIPE TRANSACTION AT PAYMENT *</h5>
 
 <!-- Disabled for web-demo -->
 {{ Form::open(array('action' => 'OrdersController@makePayment', 'method'=>'post'))}}

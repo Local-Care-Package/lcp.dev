@@ -81,7 +81,7 @@ class OrdersController extends \BaseController {
 	{
 		{
 			
-			Stripe::setApiKey("sk_test_tmZKPpxGIafBRaS640pw8WXC");
+			Stripe::setApiKey($_ENV['STRIPE_SK_TEST']);
 
 			// Get the credit card details submitted by the form
 			$token = Input::get('stripeToken');
